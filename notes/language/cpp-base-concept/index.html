@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>编程语言-C++常用基础概念 - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7f16\u7a0b\u8bed\u8a00-C++\u5e38\u7528\u57fa\u7840\u6982\u5ff5";
+    var mkdocs_page_input_path = "notes\\language\\cpp-base-concept.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-concept/">操作系统-课程笔记-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-keynote/">操作系统-面试笔记-核心要点</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-network/">计算机网络-核心要点</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-design/">计算机组成原理-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-structure/">计算机系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../software-engineering/">软件工程-课程笔记</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-introduction/">计算机导论-基础概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构-算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../data-structure/">数据结构</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../algorithm-analysis/">算法分析</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../java/">编程语言-Java程序设计</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">编程语言-C++常用基础概念</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">变量类型</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">普通数据成员和静态数据成员</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_3">构造函数和析构函数的作用</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_4">什么是拷贝构造函数？</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_5">关于深拷贝和浅拷贝</a></li>
+    
+
+    <li class="toctree-l3"><a href="#c-">C++特性-封装</a></li>
+    
+
+    <li class="toctree-l3"><a href="#c-_1">C++特性-继承</a></li>
+    
+
+    <li class="toctree-l3"><a href="#c-_2">C++特性-多态</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_6">静态多态和动态多态</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_7">虚函数与纯虚函数</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_8">关于抽象类</a></li>
+    
+
+    <li class="toctree-l3"><a href="#c">用C实现继承和多重继承</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_9">引用和指针的区别</a></li>
+    
+
+    <li class="toctree-l3"><a href="#const-int-p1-int-const-p2">const int * p1 和 int * const p2</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_10">运算符 * 和 &amp;</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_11">指针传递和引用传递</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_12">空指针和野指针</a></li>
+    
+
+    <li class="toctree-l3"><a href="#cc">C/C++ 内存管理需要遵循的规则</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_13">堆栈内存分配</a></li>
+    
+
+    <li class="toctree-l3"><a href="#smartptr">关于智能指针(SmartPtr)</a></li>
+    
+
+    <li class="toctree-l3"><a href="#explicit">explicit 关键字</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_14">流类库与输入/输出</a></li>
+    
+
+    <li class="toctree-l3"><a href="#stl">STL的容器、迭代器和算法概念</a></li>
+    
+
+    <li class="toctree-l3"><a href="#vector">Vector底层实现</a></li>
+    
+
+    <li class="toctree-l3"><a href="#mapunordered_map">map和unordered_map</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_15">迭代器类型</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_16">关于异常处理</a></li>
+    
+
+    <li class="toctree-l3"><a href="#cc_1">C/C++宏定义</a></li>
+    
+
+    <li class="toctree-l3"><a href="#lambda">lambda函数</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_17">参考资料</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../about/">其他</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>编程语言 &raquo;</li>
+        
+      
+    
+    <li>编程语言-C++常用基础概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="_1">变量类型</h3>
+<ol>
+<li><code>auto</code> 存储类型：采用栈堆方式分配内存空间，属于一时性存储，其存储空间可以被若干变量多次覆盖使用。</li>
+<li><code>register</code>存储类型：存放在通用寄存器中。</li>
+<li><code>externa</code>存储类型：所用函数和程序段中都可以引用。</li>
+<li><code>static</code>存储类型：在内存中是以固定地址存放的，在整个程序运行期间都有效。</li>
+</ol>
+<h3 id="_2">普通数据成员和静态数据成员</h3>
+<p>普通数据成员属于类的一个具体的对象，只有对象被创建了，普通数据成员才会被分配内存。而静态数据成员属于整个类，即使没有任何对象创建，类的静态数据成员变量也存在。因为类的静态数据成员的存在不依赖与于任何类对象的存在，类的静态数据成员应该在代码中被显示的初始化，一定要在类外进行。外部访问类的静态成员只能通过类名来访问。</p>
+<p>类的静态成员函数无法直接访问普通数据成员（可以通过对象名间接的访问），而类的任何成员函数都可以访问类的静态数据成员。静态成员和类的普通成员一样，也具有<code>public、protected、private</code>三种访问级别，也可以具有返回值、<code>const</code>修饰符等参数。</p>
+<p><code>静态成员函数</code>的地址可用普通函数指针储存，而普通成员函数地址需要用类成员函数指针来储存。静态成员函数不可以调用类的非静态成员。因为静态成员函数不含<code>this指针</code>。静态成员函数不可以同时声明为 <code>virtual、const、volatile</code>函数。</p>
+<h3 id="_3">构造函数和析构函数的作用</h3>
+<p>构造函数的作用就是在对象被创建时利用特定的值构造对象，讲对象初始化一个特定的状态，使此对象具有区别于彼对象的特征，完成的就是一个从一般到具体的过程，构造函数在对象创建的时候由系统自动调用。</p>
+<p>析构函数与构造函数的作用几乎正好相反，它是用来完成对象被撤出前的一些清理工作，一般情况下，析构函数是在对象的生存周期即将结束的时刻由系统自动调用，它的调用完成之后，对象也就消失了，相应的内存空间也被释放。</p>
+<h3 id="_4">什么是拷贝构造函数？</h3>
+<p>拷贝构造函数是一种特殊的构造函数，其形参是本类的对象的引用，其作用是使用一个已经存在的对象，去初始化一个新的同类的对象。在以下三种情况下会被调用：</p>
+<ul>
+<li>当用类的一个对象去初始化该类的另一个对象时；</li>
+<li>如果函数的形参是类对象，调用函数进行形参和实参结合时；</li>
+<li>如果函数的返回值是类对象，函数调用完成返回时。</li>
+</ul>
+<h3 id="_5">关于深拷贝和浅拷贝</h3>
+<p>对于build-in(内置)类型来说，复制是简单的，都是开辟新的内存，将对应的值放入新开辟的位置即可，之后它们不再有关系（指针类型就是地址的复制，和指向的地方没关系）。对于类而言，如果存在指针和引用类型，需要考虑自己来写拷贝构造函数和重载操作符。</p>
+<ul>
+<li><strong>浅拷贝</strong>：<code>位拷贝</code>指将一个对象的内存映像按位原封不动的复制给另一个对象，所谓<code>值拷贝</code>就是指将原对象的值复制一份给新对象。 在用"bitwise assignment"时会直接将对象的内存映像复制给另一个对象，这样两个对象会指向同一个内存区域，当一个对象被释放后，另一个对象的指针会成为野指针。这时，就应该编写operator=和copy constructor来实现值拷贝 。默认的拷贝构造函数”和“缺省的赋值函数”均采用“位拷贝”而非“值拷贝”的方式来实现，倘若类中含有指针变量，这两个函数注定将出错。</li>
+<li><strong>深拷贝</strong>：在“深拷贝”的情况下，对于对象中动态成员，就不能仅仅简单地赋值了，而应该重新动态分配空间。</li>
+<li>默认拷贝构造函数基本工作原理：对所有的非POD类型(Plain Old Data)成员变量执行拷贝构造，POD类型成员变量则进行位拷贝，当成员变量都是POD类型的时候，编译器也许不会产生拷贝构造函数，只是对对象进行位拷贝。</li>
+<li>默认operator=基本工作原理：对所有的非POD类型成员变量执行operator=操作，POD类型成员变量则进行位拷贝，当成员变量都是POD类型的时候，编译器也许不会产生operator=，只是对对象进行位拷贝。 </li>
+<li>从上面两个工作原理看到： (1)当class成员变量是有const修饰、引用类型、不能够提供operator=操作时候就不会产生operator=，我们对这个class对象进行赋值操作的时候就是编译出错。 (2)当class成员变量不能够提供拷贝构造操作时候就不会产生拷贝构造函数，我们对这个class对象进行拷贝构造操作的时候就是编译出错。</li>
+</ul>
+<h3 id="c-">C++特性-封装</h3>
+<p>封装：封装是在设计类的一个基本原理，是将抽象得到的数据和行为（或功能）相结合，形成一个有机的整体，也就是将数据与对数据进行的操作进行有机的结合，形成“类”，其中数据和函数都是类的成员。</p>
+<p>封装可以使得代码模块化，继承可以扩展已存在的代码，他们的目的都是为了代码重用。而多态的目的则是为了接口重用。</p>
+<h3 id="c-_1">C++特性-继承</h3>
+<pre><code class="c++">&quot;首先要明确从基类继承的成员的访问控制属性受两方面因数的影响（1.成员在基类中原来声明的访问控制属性；2.继承方式）。&quot;
+
+&quot;在运用经常关系时，要注意基类的构造函数和析构函数都不能继承，但是在建立派生类对象时基类的构造函数会被自动调用，派生类消亡时，会自动调用基类的析构函数。&quot;
+
+&quot;在多继承的情况下，如果存在公共基类，就会出现成员标识二义性的问题，这是将公共基类作为虚基类继承是一个比较好的解决方案（虚基类继承的语法格式：`class 派生类名：virtual 继承方式 基类名`）。&quot;
+</code></pre>
+
+<p><strong>继承</strong>：如果一个类别B“继承自”另一个类别A，就把这个B称为“A的子类”，而把A称为“B的父类别”也可以称“A是B的超类”。继承可以使得子类具有父类别的各种属性和方法，而不需要再次编写相同的代码。在子类继承父类的同时，可以重新定义某些属性，并重写某些方法，即覆盖父类别的原有属性和方法，使其获得与父类别不同的功能。</p>
+<ul>
+<li>public:  父类对象内部、父类对象外部、子类对象内部、子类对象外部都可以访问。</li>
+<li>protected:  父类对象内部、子类对象内部可以访问，父类对象外部、子类对象外部都不可访问。</li>
+<li>private：父类对象内部可以访问，其他都不可以访问。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>访问对象</th>
+<th>public</th>
+<th>protected</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父类</td>
+<td>可见</td>
+<td>可见</td>
+<td>可见</td>
+</tr>
+<tr>
+<td>子类</td>
+<td>可见</td>
+<td>可见</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>父类外部</td>
+<td>可见</td>
+<td>不可见</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>子类外部</td>
+<td>可见</td>
+<td>不可见</td>
+<td>不可见</td>
+</tr>
+</tbody>
+</table>
+<p><strong>继承方式</strong>:  三种继承方式不影响子类对父类的访问权限，子类对父类，只看父类的访问控制权。继承方式是为了控制子类(也称派生类)的调用方(也叫用户)对父类(也称基类)的访问权限。</p>
+<p><code>public、protected、private</code> 三种继承方式，相当于把父类的 public 访问权限在子类中变成了对应的权限。 如 protected 继承，把父类中的 public 成员在本类中变成了 protected 的访问控制权限；private 继承，把父类的 public 成员和 protected 成员在本类中变成了 private 访问控制权。</p>
+<h3 id="c-_2">C++特性-多态</h3>
+<p><strong>多态</strong>：多态性可以简单地概括为“一个接口，多种方法”，程序在运行时才决定调用的函数，它是面向对象编程领域的核心概念。多态(polymorphism)是对类的特定成员函数的再抽象。C++支持的多态有多种类型，重载（包括函数重载和运算符重载）和虚函数是其中主要的方式。</p>
+<p><strong>静态多态</strong>：静态多态也称为静态绑定或早绑定。编译器在编译期间完成的，编译器根据函数实参的类型(可能会进行隐式类型转换)，可推断出要调用那个函数，如果有对应的函数就调用该函数，否则出现编译错误。</p>
+<ul>
+<li>
+<p><strong>函数重载</strong>:  编译器根据函数不同的参数表，对同名函数的名称做修饰，然后这些同名函数就成了不同的函数（至少对于编译器来说是这样的）。函数的调用，在编译器间就已经确定了，是静态的。也就是说，它们的地址在编译期就绑定了（早绑定）。</p>
+</li>
+<li>
+<p><strong>泛型编程</strong>:  泛型编程就是指编写独立于特定类型的代码，泛型在C++中的主要实现为模板函数和模板类。泛型的特性：</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>函数模板并不是真正的函数，它只是C++编译生成具体函数的一个模子。</li>
+<li>函数模板本身并不生成函数，实际生成的函数是替换函数模板的那个函数，这种替换是编译期就绑定的。</li>
+<li>函数模板不是只编译一份满足多重需要，而是为每一种替换它的函数编译一份。</li>
+<li>函数模板不允许自动类型转换。</li>
+<li>函数模板不可以设置默认模板实参。比如<code>template &lt;typename T=0&gt;</code>不可以。</li>
+</ul>
+</blockquote>
+<p><strong>动态多态</strong>:  C++的动态多态是基于虚函数的。对于相关的对象类型，确定它们之间的一个共同功能集，然后在基类中，把这些共同的功能声明为多个公共的虚函数接口。各个子类重写这些虚函数，以完成具体的功能。客户端的代码（操作函数）通过指向基类的引用或指针来操作这些对象，对虚函数的调用会自动绑定到实际提供的子类对象上去。</p>
+<p><strong>宏多态</strong>:  带变量的宏可以实现一种初级形式的静态多态：</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+// 定义泛化记号：宏ADD
+#define ADD(A, B) (A) + (B);
+
+int main()
+{
+    int i1(1), i2(2);
+    std::string s1(&quot;Hello, &quot;), s2(&quot;world!&quot;);
+    int i = ADD(i1, i2);                        // 两个整数相加
+    std::string s = ADD(s1, s2);                // 两个字符串“相加”
+    std::cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;/n&quot;;
+    std::cout &lt;&lt; &quot;s = &quot; &lt;&lt; s &lt;&lt; &quot;/n&quot;;
+}
+</code></pre>
+
+<h3 id="_6">静态多态和动态多态</h3>
+<p><strong>静态多态</strong></p>
+<ul>
+<li>优点：由于静多态是在编译期完成的，因此效率较高，编译器也可以进行优化；有很强的适配性和松耦合性，比如可以通过偏特化、全特化来处理特殊类型；最重要一点是静态多态通过模板编程为C++带来了泛型设计的概念，比如强大的STL库。</li>
+<li>缺点：由于是模板来实现静态多态，因此模板的不足也就是静态多态的劣势，比如调试困难、编译耗时、代码膨胀、编译器支持的兼容性不能够处理异质对象集合</li>
+</ul>
+<p><strong>动态多态</strong></p>
+<ul>
+<li>优点：OO设计，对是客观世界的直觉认识；实现与接口分离，可复用；处理同一继承体系下异质对象集合的强大威力。</li>
+<li>缺点：运行期绑定，导致一定程度的运行时开销；编译器无法对虚函数进行优化；笨重的类继承体系，对接口的修改影响整个类层次。</li>
+</ul>
+<p><strong>区别比较</strong></p>
+<ul>
+<li>
+<p>静态多态在编译期决定，由模板具现完成；而动态多态在运行期决定，由继承、虚函数实现；动态多态中接口是显式的，以函数签名为中心，多态通过虚函数在运行期实现；</p>
+</li>
+<li>
+<p>都能够实现多态性，静态多态/编译期多态、动态多态/运行期多态；都能够使接口和实现相分离，一个是模板定义接口，类型参数定义实现；一个是基类虚函数定义接口，继承类负责实现；</p>
+</li>
+</ul>
+<h3 id="_7">虚函数与纯虚函数</h3>
+<p><strong>虚函数</strong>：主要体现在“推迟联编”或者“动态联编”上，一个类函数的调用并不是在编译时刻被确定的，而是在运行时刻被确定的。由于编写代码的时候并不能确定被调用的是基类的函数还是哪个派生类的函数，所以被成为<code>虚函数</code>。</p>
+<p>虚函数只能借助于指针或者引用来达到多态的效果。常用的方式是父类指针指向子类对象。当有多个对于父类的继承时，可以统一用父类指针来表示各子类对象，但是事实上所指向的对象具体是哪一个，或者说所调用的函数是哪一个子类的对象的函数需要在运行时才知道。这就实现了多态。</p>
+<pre><code class="c++">class A{
+    public:
+        virtual void foo(){
+            cout&lt;&lt;&quot;A::foo() is called&quot;&lt;&lt;endl;
+        }
+};
+
+class B:public A{
+    public:
+        void foo(){
+            cout&lt;&lt;&quot;B::foo() is called&quot;&lt;&lt;endl;
+        }
+};
+
+int main(void)
+{
+    A *a = new B();
+    a-&gt;foo();   // 在这里，a虽然是指向A的指针，但是被调用的函数(foo)却是B的!
+    return 0;
+}
+</code></pre>
+
+<p><strong>语法</strong>：</p>
+<pre><code class="c">virtual void fun1()=0 // 纯虚函数
+virtual void fun1()s  // 虚函数
+</code></pre>
+
+<p><strong>纯虚函数</strong>：纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。含有虚函数的类成为抽象类，不能生成对象。</p>
+<p><strong>虚函数表</strong>：虚表是属于类的，而不是属于某个具体的对象，一个类只需要一个虚表即可 。同一个类的所有对象都使用同一个虚表。为了指定对象的虚表，对象内部包含一个虚表的指针，来指向自己所使用的虚表。为了让每个包含虚表的类的对象都拥有一个虚表指针，编译器在类中添加了一个指针<code>*__vptr</code>，用来指向虚表。这样，当类的对象在创建时便拥有了这个指针，且这个指针的值会自动被设置为指向类的虚表。</p>
+<h3 id="_8">关于抽象类</h3>
+<p>带有纯虚函数的类是抽象类，抽象类的主要作用是通过它为一个类族建立一个公共的接口，使它们能够有效的发挥多态特性。抽象类声明了一组派生类共同操作接口的通用语义，而接口的完整实现，即纯虚函数的函数体，要由派生类自己给出。但抽象类的派生类并非一定要给出纯虚函数的实现，如果派生类没有给出纯虚函数的实现，这个派生累仍然是一个抽象类。</p>
+<h3 id="c">用C实现继承和多重继承</h3>
+<p>首先考虑问题，在oo的问题上c和c++差了些什么，其实就是封装、继承和多态。所以想要实现继承的话其实这三点都需要用c来实现。</p>
+<ul>
+<li>
+<p><strong>封装</strong>: 很容易想到struct来实现封装，但是struct只能包含成员变量，不能包含成员函数，所以这里需要引入函数指针<code>void(*p)(int)</code>。然后通过具体的函数在外部定义再赋值给函数指针的方法就可以实现struct包含数据成员和成员函数。</p>
+</li>
+<li>
+<p><strong>继承</strong>: 继承的内涵是子类包含父类的内容，因此可以采用(1)、父类是子类的成员对象的方法来实现，多重继承则直接多个对象。(2)、将父类内容全部拷贝到子类当中，可以使用宏的方法避免太多层的继承带来的代码修改问题。</p>
+</li>
+<li>
+<p><strong>多态</strong>：通过覆盖的方法来实现，将子类中的父类对象的函数指针指向另一个不同的函数。</p>
+</li>
+</ul>
+<h3 id="_9">引用和指针的区别</h3>
+<p>引用是给变量起一个别名，所以引用不会分配内存空间。声明方法：（<code>类型标识符 &amp;引用名=目标变量名;（如int &amp;r = num;）</code>）。指针是一个存放地址的变量，需要分配内存空间，声明方法：（<code>类型标识符 *指针名 = 目标变量地址（int * p = &amp;a;）</code>）。</p>
+<p>对于声明后的指针，p指向的是变量a的地址，*p 表示的是变量a的内容。在C++中使用引用代替指针可以提高程序的安全性，但当需要对变量重新赋值以另外的地址或赋值为NULL时只能使用指针。</p>
+<p><strong>区别</strong>： </p>
+<ul>
+<li>
+<p>本质区别是：指针指向一块内存，它的内容是所指内存的地址；而引用则是某块内存的别名，引用不改变指向。</p>
+</li>
+<li>
+<p>引用不可以为空，但指针可以为空。定义一个引用的时候，必须初始化。因此使用指针之前必须做判空操作，而引用就不必。</p>
+</li>
+<li>引用的大小是所指向的变量的大小，因为引用只是一个别名而已；指针是指针本身的大小，4个字节（32位）。</li>
+<li>引用和指针的<code>++</code>自增运算符意义不同，指针的<code>++</code>表示的地址的变化，一般是向下4个字节的大小（一个只针的大小），引用的++就是对应元素的<code>++</code>操作。</li>
+</ul>
+<h3 id="const-int-p1-int-const-p2">const int * p1 和 int * const p2</h3>
+<p><code>const int * p1</code> 声明了一个指向整型常量的指针p1，因此不能通过指针p1来改变它所指向的整型值；<code>int * const p2</code> 声明了一个指针型常量，用于存放整型变量的地址，这个指针一旦初始化后，就不能被重新赋值。（理解方法：主要是参考<code>const</code>修饰的谁）。对于引用来讲<code>int const &amp; p=i;</code>和 <code>const int &amp;p=i;</code>没什么区别，都是指指向的对象是常量。</p>
+<h3 id="_10">运算符 * 和 &amp;</h3>
+<p>运算符<code>*</code>和运算符<code>&amp;</code>的区别：<code>*</code> 称为指针运算符，是一个一元运算符，表示指针所指向的对象的值；<code>&amp;</code> 称为取地址运算符，也是一个一元操作符，是用来得到一个对象的地址。个人认为它们是一对作用相反的运算符。</p>
+<h3 id="_11">指针传递和引用传递</h3>
+<p>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。</p>
+<p>引用传递过程中，被调函数的形式参数也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。正因为如此，被调函数对形参做的任何操作都影响了主调函数中的实参变量。</p>
+<h3 id="_12">空指针和野指针</h3>
+<p><strong>空指针</strong>：一般声明一个指针变量赋值为NULL，这就是空指针，各个类型的空指针都存在确确实实的内存地址，但是不会指向任何有效的值的内存地址，对空指针操作，例如访问属性和方法，会抛出空指针异常，因为空指针指向的内存地址没有对应的物理地址。</p>
+<p><strong>野指针</strong>：指那些释放内存，但是指针赋值为空，这时候的指针指向任意地址，好可怕，例如指向内核地址或不属于本程序的内存地址，程序会被kill，即奔溃。</p>
+<p><strong>内存泄漏</strong>：分为堆泄露和资源泄露两种，内存分配失败或者内存分配成功却没有指针指向它（即无法操作该内存），会导致内存分配的越来越多，导致系统内存不够而终止程序。</p>
+<h3 id="cc">C/C++ 内存管理需要遵循的规则</h3>
+<ul>
+<li>用<code>malloc</code> 或者 <code>new</code>申请内存之后，应该立即检查指针值是否为 NULL ，防止使用指针值为NULL的内存；</li>
+<li>不要忘记数组和动态内存赋初值，防止未被初始化的内存作为右值使用；</li>
+<li>避免数组或者指针下标越界，特别要当心“多1”或者“少1”的操作；</li>
+<li>动态内存的申请与释放必须配对，防止内存泄露；</li>
+<li>用<code>free</code>或者<code>delete</code>释放了内存之后，立即将指针设置为NULL，防止产生“野指针”；</li>
+</ul>
+<h3 id="_13">堆栈内存分配</h3>
+<ul>
+<li>
+<p>栈区（stack）— 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。  </p>
+</li>
+<li>
+<p>堆区（heap）—  一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。  </p>
+</li>
+<li>
+<p>全局区（静态区）（static）— 全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后由系统释放。  </p>
+</li>
+<li>
+<p>文字常量区—常量字符串就是放在这里的，程序结束后由系统释放。</p>
+</li>
+<li>
+<p>程序代码区—存放函数体的二进制代码。</p>
+</li>
+</ul>
+<h3 id="smartptr">关于智能指针(SmartPtr)</h3>
+<p>当我们写一个new语句时，一般就会立即把delete语句直接也写了，但是我们不能避免程序还未执行到delete时就跳转了或者在函数中没有执行到最后的delete语句就返回了，如果我们不在每一个可能跳转或者返回的语句前释放资源，就会造成内存泄露。使用<code>智能指针</code>可以很大程度上的避免这个问题，因为智能指针就是一个类，当超出了类的作用域是，类会自动调用析构函数，析构函数会自动释放资源。</p>
+<p>将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间。</p>
+<p>STL一共给我们提供了四种智能指针：<code>auto_ptr、unique_ptr、shared_ptr和weak_ptr</code>。模板auto_ptr 是C++98提供的解决方案，C+11已将将其摒弃，并提供了另外两种解决方案。</p>
+<p>智能指针需要引入头文件<code>#include &lt;memory&gt;</code>。智能指针的构造函数都是用<code>explicit</code>关键字修饰的，即不允许隐式的转换，必须显示调用构造函数。</p>
+<pre><code class="cpp">//
+// 代码参考：智能指针学习（https://www.cnblogs.com/MakeView660/p/6958068.html）
+
+#include &lt;memory&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+using namespace std::tr1;
+
+//auto_ptr      http://www.cplusplus.com/reference/memory/auto_ptr/
+//unique_ptr    http://www.cplusplus.com/reference/memory/unique_ptr/
+//share_ptr     http://www.cplusplus.com/reference/memory/share_ptr/
+//weak_ptr      http://www.cplusplus.com/reference/memory/weak_ptr/
+class TestSmartPtr
+{
+public:
+    TestSmartPtr(string str)
+    {
+        m_str = str;
+        cout &lt;&lt; &quot;TestSmartPtr creat\n&quot;;
+    }
+    ~TestSmartPtr()
+    {
+        cout &lt;&lt; &quot;TestSmartPtr delete:&quot; &lt;&lt; m_str &lt;&lt;endl;
+    }
+    string&amp; getStr()
+    {
+        return m_str;
+    }
+    void setStr(string str)
+    {
+        m_str = str;
+    }
+    void print()
+    {
+        cout &lt;&lt; m_str &lt;&lt; endl;
+    }
+private:
+    string m_str;
+};
+
+
+class classB;
+class classA
+{
+public:
+    //shared_ptr&lt;classB&gt; pB_;
+    weak_ptr&lt;classB&gt; pB_;
+    ~classA()
+    {
+        cout &lt;&lt; &quot;classA delete\n&quot;;
+    }
+};
+class classB
+{
+public:
+    shared_ptr&lt;classA&gt; pA_;
+    ~classB()
+    {
+        cout &lt;&lt; &quot;classB delete\n&quot;;
+    }
+};
+
+
+int main(void)
+{
+    //auto_ptr
+    /*成员函数get()返回一个原始的指针，成员函数reset()重新绑定指向的对象，而原来的对象则会被释放
+      判断一个智能指针是否为空应该使用if(pTestAutoPtr.get() == NULL)
+      成员函数release()只是把智能指针赋值为空，但是它原来指向的内存并没有被释放，相当于它只是释放了对资源的所有权
+      当我们想要在中途释放资源，而不是等到智能指针被析构时才释放，我们可以使用pTestAutoPtr.reset(); 语句。
+    */
+#if 0
+    auto_ptr&lt;TestSmartPtr&gt; pTestAutoPtr(new TestSmartPtr(&quot;315&quot;));
+    if(pTestAutoPtr.get() == NULL)
+    {
+        cout &lt;&lt; &quot;pTestAutoPtr = NULL\n&quot;;
+    }
+    pTestAutoPtr-&gt;setStr(&quot;Michael &quot;);
+    pTestAutoPtr-&gt;print();
+    pTestAutoPtr.get()-&gt;print();
+    pTestAutoPtr-&gt;getStr() += &quot;Joessy !&quot;;
+    (*pTestAutoPtr).print();
+    pTestAutoPtr.reset(new TestSmartPtr(&quot;315&quot;));
+    pTestAutoPtr-&gt;print();
+    pTestAutoPtr.release();
+#endif
+
+    //unique_ptr
+    /*unique_ptr 是一个独享所有权的智能指针，它提供了严格意义上的所有权，包括：
+    1、拥有它指向的对象
+    2、无法进行复制构造，无法进行复制赋值操作。即无法使两个unique_ptr指向同一个对象。但是可以进行移动构造和移动赋值操作
+    3、保存指向某个对象的指针，当它本身被删除释放的时候，会使用给定的删除器释放它指向的对象
+    unique_ptr 可以实现如下功能：
+    1、为动态申请的内存提供异常安全
+    2、动态申请的内存所有权传递给某函数
+    3、从某个函数返回动态申请内存的所有权
+    4、在容器中保存指针
+    5、auto_ptr应该具有的功能
+    */
+#if 0
+    unique_ptr&lt;int&gt; up(p);
+    unique_ptr&lt;TestSmartPtr&gt; pTestUniquePtr1(new TestSmartPtr(&quot;123&quot;));
+    unique_ptr&lt;TestSmartPtr&gt; pTestUniquePtr2(new TestSmartPtr(&quot;456&quot;));
+    pTestUniquePtr1-&gt;print();
+    pTestUniquePtr2 = std::move(pTestUniquePtr1);   //不能直接pTestUniquePtr2 = pTestUniquePtr1
+    if(pTestUniquePtr1 == NULL)
+    {
+        cout &lt;&lt; &quot;pTestUniquePtr1 = NULL\n&quot;;
+    }
+    TestSmartPtr* p = pTestUniquePtr2.release();
+    p-&gt;print();
+    pTestUniquePtr1.reset(p);
+    pTestUniquePtr1-&gt;print();
+#endif
+
+    //share_ptr
+    /* 从share中就可以看出资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。
+    可以通过成员函数use_count()来查看资源的所有者个数。
+    除了可以通过new来构造，还可以通过传入auto_ptr, unique_ptr,weak_ptr来构造。
+    当我们调用release()时，当前指针会释放资源所有权，计数减一。
+    当计数等于0时，资源会被释放。
+    */
+#if 0
+    shared_ptr&lt;TestSmartPtr&gt; pTestSharePtr1(new TestSmartPtr(&quot;123&quot;));
+    shared_ptr&lt;TestSmartPtr&gt; pTestSharePtr2(new TestSmartPtr(&quot;456&quot;));
+    cout &lt;&lt; pTestSharePtr2-&gt;getStr()&lt;&lt;endl;
+    cout &lt;&lt; pTestSharePtr2.use_count()&lt;&lt;endl;
+    pTestSharePtr1 = pTestSharePtr2;            //&quot;456&quot;引用次数加1，&quot;123&quot;销毁
+    pTestSharePtr1-&gt;print();
+    cout &lt;&lt; pTestSharePtr2.use_count() &lt;&lt; endl;
+    cout &lt;&lt; pTestSharePtr1.use_count() &lt;&lt; endl;
+    pTestSharePtr1.reset();
+    pTestSharePtr2.reset();                     //此时&quot;456&quot;销毁
+#endif
+
+    //weak_ptr
+    /*weak_ptr是用来解决shared_ptr相互引用时的死锁问题;
+    如果说两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。
+    它是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化;
+    shared_ptr可以直接赋值给它，它可以通过调用lock函数来获得shared_ptr。
+    */
+#if 0
+    shared_ptr&lt;classB&gt; pB(new classB());
+    shared_ptr&lt;classA&gt; pA(new classA());
+    pB-&gt;pA_ = pA;
+    pA-&gt;pB_ = pB;
+    cout &lt;&lt; pB.use_count() &lt;&lt; endl;
+    cout &lt;&lt; pA.use_count() &lt;&lt; endl;
+#endif
+
+    /*说明：
+    pA与pB之间互相引用，两个资源的引用计数为2;
+    当要跳出函数时，智能指针pA与pB析构时两个资源引用计数会减一;
+    但是两者引用计数还是为1，导致跳出函数时资源没有被释放（classA与classB的析构函数没有被调用）.
+
+    如果把其中一个改为weak_ptr就可以了，我们把类A里面的shared_ptr&lt;B&gt; pB_; 改为weak_ptr&lt;B&gt; pb_;
+    这样的话，资源classB的引用开始就只有1;
+    当pB析构时，B的计数变为0，B得到释放;
+    B释放的同时也会使A的计数减一;
+    同时pa析构时使A的计数减一，那么A的计数为0，A得到释放。
+    */
+
+    cin.get();
+    return 0;
+}
+
+</code></pre>
+
+<h3 id="explicit">explicit 关键字</h3>
+<p>在类的定义中允许使用多种方式进行构造函数的调用。如:</p>
+<pre><code class="cpp">struct A
+{
+    A(int) { }      // 转换构造函数
+    A(int, int) { } // 转换构造函数 (C++11)
+    operator bool() const { return true; }
+};
+
+int main()
+{
+    A a1 = 1;      // OK ：复制初始化选择 A::A(int)
+    A a2(2);       // OK ：直接初始化选择 A::A(int)
+    A a3 {4, 5};   // OK ：直接列表初始化选择 A::A(int, int)
+    A a4 = {4, 5}; // OK ：复制列表初始化选择 A::A(int, int)
+    A a5 = (A)1;   // OK ：显式转型进行 static_cast
+}
+
+</code></pre>
+
+<p><code>A a1 = 1;</code>相当于<code>A temp(1); a(temp);</code>调用了构造函数创建了temp对象，再通过复制构造函数进行对a1的构造。
+<code>A a2(2);</code>就是直接调用构造函数。
+<code>A a3 {4, 5};</code>直接调用构造函数<code>A a3(4,5);</code>。
+<code>A a4 = {4, 5};</code>相当于<code>A temp(4,5); a(temp);</code></p>
+<p>这其中可以看出编译器背着你做了很多工作，从而使得类的构造更容易。但是这种隐式的转换也可能带来问题，比如当一个类只接受整形和字符串类型时，可能因为'c'和“c”错误导致调用了不同的构造函数（因为'c'可以认为是整数99）。这种错误难以发现也难以避免，可以通过explicit关键字的形式声明构造函数，从而指定构造函数或转换函数 (C++11 起)为显式，即它不能用于隐式转换和复制初始化。</p>
+<pre><code class="c">struct B
+{
+    explicit B(int) { }
+    explicit B(int, int) { }
+    explicit operator bool() const { return true; }
+};
+
+int main()
+{
+//  B b1 = 1;      // 错误：复制初始化不考虑 B::B(int)
+    B b2(2);       // OK ：直接初始化选择 B::B(int)
+    B b3 {4, 5};   // OK ：直接列表初始化选择 B::B(int, int)
+//  B b4 = {4, 5}; // 错误：复制列表初始化不考虑 B::B(int,int)
+    B b5 = (B)1;   // OK ：显式转型进行 static_cast
+}
+</code></pre>
+
+<p>使用关键词explicit可以使构造函数有明确的转换，避免了由隐式转换而出现的错误。在编程过程中合理的使用explicit关键词，会使得代码更加的严谨规范。</p>
+<h3 id="_14">流类库与输入/输出</h3>
+<p>I/O 流类库是一个提供输入/输出功能的、面向对象的类库。流是对输入/输出的一个抽象表述、程序通过从流中提取字符和向流中插入字符来实现输入输出。一般来说、流是与实际字符源或目标相关的，例如磁盘文件、键盘或显示器，所以对流进行的提取或插入操作实际上就是对物理设备的操作。</p>
+<p>标准输入/输出流对象时连接程序与标准输入/输出设备的，常用的标准输入流有<code>cin</code>，标准输出流有：<code>cout、cerr、clog</code>。标准流对象都是在<code>&lt;iostream&gt;</code>中预先声明好的。</p>
+<h3 id="stl">STL的容器、迭代器和算法概念</h3>
+<ul>
+<li>
+<p>STL的容器库包括7种基本容器：向量（vector）、双向队列（deque）、列表（list）、集合（set）、多重集合（multiset）、映射（map）和多重映射（multimap）。这7种容器可以分为两种基本类型：顺序容器好关联容器。</p>
+</li>
+<li>
+<p>STL根据迭代器的功能，将它们分为5类：输入迭代器、输出迭代器、前向迭代器、双向迭代器、随机访问迭代器。</p>
+</li>
+<li>
+<p>STL标准模板库中的算法大致分为4类：非可变序列的算法（不会改变容器的内容）、可变序列的算法、排序相关的算法、通用数值算法。</p>
+</li>
+</ul>
+<h3 id="vector">Vector底层实现</h3>
+<p>1、vector的数据结构
+vector 的数据结构为线性连续空间。迭代器start和finish分别指向配置来的连续空间中目前已经被使用的范围，end_of_storage指向整个连续空间的（包含备用空间）的尾端。</p>
+<pre><code class="c++">template &lt;class T,class Alloc = clloc&gt;
+class vector{
+...
+protected:
+    iterator start;
+    iterator end;
+    iterator end_of_storage;
+}
+
+</code></pre>
+
+<p>2、vector中的size表示当前实际数据数量，capacity 则表示当前可容纳的数量，即已开辟的内存。</p>
+<p>3、释放(pop_back)、删除(erase) 和 清空(clear) 只会改变size，不会改变capacity 。只有在vector析构的时候才会清空所有内存。</p>
+<p>4、追加(push_back)、 插入(insert)等操作首先使用备用空间，当发现备用空间小于“新增元素个数”就需要扩展空间。扩展后的空间大小为：旧长度的两倍或旧长度+新增元素个数（或者说是增加max(oldsize,n)。</p>
+<p>5、扩容时的操作流程为：开辟新内存 -&gt; copy数据 -&gt; 释放旧内存。因此频繁的导致vector扩容(如for循环持续push_back)会使得程序效率降低。因此，如有需要，可以提前通过初始化或者resize、reserve来预先开辟较大的容量。</p>
+<p>6、如果想要提前释放掉vector开辟的内存，可以使其与一个空vector进行交换。这是因为vector的拷贝构造函数和operator=函数只拷贝begin()到end()的部分，end()到start+end_of_storage部分不会拷贝；而swap函数是原样拷贝，包括capacity部分都会考过来。平时vector的空间是只增不减的，clear()函数只析构，不释放空间。因此只能用swap函数来释放了。swap之后临时的那个vector应该释放掉，方法是放在花括号中，放在函数中，或者最强大的——用临时对象。并且，用他本身去初始化该临时对象，于是，swap后，vector的容量就等于size，没有多余的空间。</p>
+<p>7、vector支持随机存取，提供的是Random Access Iterator.</p>
+<h3 id="mapunordered_map">map和unordered_map</h3>
+<p>STL中，map 对应的数据结构是<code>红黑树</code>。红黑树是一种近似于平衡的二叉查找树，里面的数据是有序的。在红黑树上做查找操作的时间复杂度为 O(logN)。而 unordered_map 对应哈希表，哈希表的特点就是查找效率高，时间复杂度为常数级别 O(1)， 而额外空间复杂度则要高出许多。所以对于需要高效率查询的情况，使用 unordered_map 容器。而如果对内存大小比较敏感或者数据存储要求有序的话，则可以用 map 容器。</p>
+<h3 id="_15">迭代器类型</h3>
+<p>共有五类迭代器：Input Iterator ,Output Iterator,Forwaed Iterator,Bidirectional Iterator,Random Access Iterator.</p>
+<ul>
+<li>
+<p>输入迭代器（Input Iterator）：通过对输入迭代器解除引用，它将引用对象，而对象可能位于集合中。最严格的输入迭代只能以只读方式访问对象。例如：istream。</p>
+</li>
+<li>
+<p>输出迭代器（Output Iterator）：该类迭代器和Input Iterator极其相似，也只能单步向前迭代元素，不同的是该类迭代器对元素只有写的权力。例如：ostream, inserter。
+  以上两种基本迭代器可进一步分为三类：</p>
+</li>
+<li>
+<p>前向迭代器（Forward Iterator）：该类迭代器可以在一个正确的区间中进行读写操作，它拥有Input Iterator的所有特性，和Output Iterator的部分特性，以及单步向前迭代元素的能力。</p>
+</li>
+<li>
+<p>双向迭代器（Bidirectional Iterator）：该类迭代器是在Forward Iterator的基础上提供了单步向后迭代元素的能力。例如：list, set, multiset, map, multimap。</p>
+</li>
+<li>
+<p>随机迭代器（Random Access Iterator）：该类迭代器能完成上面所有迭代器的工作，它自己独有的特性就是可以像指针那样进行算术计算，而不是仅仅只有单步向前或向后迭代。例如：vector, deque, string, array。</p>
+</li>
+</ul>
+<h3 id="_16">关于异常处理</h3>
+<p>当一个函数在执行的过程中出现了一些不平常的情况，或运行结果无法定义的情况，使得操作不得不被中断时，这就是所谓的异常。异常通常是用throw关键字产生的一个对象，用来表明出现了一些意外的情况。C++的异常处理机制有很多优点，可以使的异常的引发和处理不必在一个函数中，这样底层的函数可以着重解决具体问题，而不必过多的考虑异常的处理。上层调用者可以在适当的位置设计对不同类型异常的处理。</p>
+<p>C++提供了三个关键字来对异常进行处理：
+<code>try</code>：可能抛出异常的程序段必须以try开。紧跟着try的是一段包含在大括号中的程序，这段程序有可能抛出异常。
+<code>throw</code>：异常要通过关键字throw来抛出。异常对象的类型决定那一个catch语句可以捕获这一异常。
+<code>catch</code>：处理异常的程序必须以catch开始。跟随在catch后面的是一段包含在大括号中的程序。</p>
+<h3 id="cc_1">C/C++宏定义</h3>
+<p><code>#define</code>是C语言提供的宏定义命令，其主要目的是使程序编写规范，修改调试容易，并在一定程度上提高程序的运行效率。使用<code>#define</code>命令将一个标识符定义为一个字符串，该标识符被称为宏名，被定义的字符串称为替换文本。该命令有两种格式：一种是简单的宏定义，另一种是带参数的宏定义。</p>
+<h3 id="lambda">lambda函数</h3>
+<p>C++中lambda函数是作为C++11新特新添加到C++中的，其主要是以匿名函数捕获scope内变量的方式构造闭包（closure）。相关标准参考：<a href="https://en.cppreference.com/w/cpp/language/lambda">c++ reference</a></p>
+<h3 id="_17">参考资料</h3>
+<ul>
+<li><a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></li>
+<li><a href="https://isocpp.org/">https://isocpp.org/</a></li>
+<li><a href="https://zh.cppreference.com/w/cpp">C++ 参考手册</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../optimized-cpp/" class="btn btn-neutral float-right" title="编程语言-C++性能优化指南">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../java/" class="btn btn-neutral" title="编程语言-Java程序设计"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../java/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../optimized-cpp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
