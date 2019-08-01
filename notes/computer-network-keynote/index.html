@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>知识笔记-计算机网络-基础概念 - Learning Notes</title>
+  <title>面试要点-计算机网络篇 - Learning Notes</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u77e5\u8bc6\u7b14\u8bb0-\u8ba1\u7b97\u673a\u7f51\u7edc-\u57fa\u7840\u6982\u5ff5";
-    var mkdocs_page_input_path = "notes\\computer-network.md";
+    var mkdocs_page_name = "\u9762\u8bd5\u8981\u70b9-\u8ba1\u7b97\u673a\u7f51\u7edc\u7bc7";
+    var mkdocs_page_input_path = "notes\\computer-network-keynote.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -61,9 +61,15 @@
                     
     <a class="" href="../OS-notes-keynote/">面试要点-操作系统篇</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../computer-network-keynote/">面试要点-计算机网络篇</a>
+    <a class="current" href="./">面试要点-计算机网络篇</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#tcpudp">TCP和UDP的区别及应用场景</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -91,12 +97,9 @@
                     
     <a class="" href="../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">知识笔记-计算机网络-基础概念</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../computer-network/">知识笔记-计算机网络-基础概念</a>
                 </li>
                 <li class="">
                     
@@ -167,11 +170,11 @@
     
       
         
-          <li>知识笔记 &raquo;</li>
+          <li>面试知识 &raquo;</li>
         
       
     
-    <li>知识笔记-计算机网络-基础概念</li>
+    <li>面试要点-计算机网络篇</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -181,7 +184,31 @@
           <div role="main">
             <div class="section">
               
-                
+                <h2 id="tcpudp">TCP和UDP的区别及应用场景</h2>
+<p><strong>面向连接VS无连接</strong><br />
+TCP建立一个连接需要3次握手IP数据包，断开连接需要4次握手。另外断开连接时发起方可能进入TIME_WAIT状态长达数分钟（视系统设置，windows一般为120秒），在此状态下连接（端口）无法被释放。</p>
+<p>UDP不需要建立连接，可以直接发起。</p>
+<p><strong>可靠VS不可靠</strong> <br />
+TCP利用握手、ACK和重传机制，udp没有。</p>
+<ol>
+<li>校验和（校验数据是否损坏）；</li>
+<li>定时器（分组丢失则重传）；</li>
+<li>序列号（用于检测丢失的分组和重复的分组）；</li>
+<li>确认应答ACK（接收方告知发送方正确接收分组以及期望的下一个分组）；</li>
+<li>否定确认（接收方通知发送方未被正确接收的分组）；</li>
+<li>窗口和流水线（用于增加信道的吞吐量）。（窗口大小：无需等待确认应答而可以继续发送数据的最大值）</li>
+</ol>
+<p><strong>面向字节流vs面向报文</strong>   </p>
+<ul>
+<li>面向报文
+  面向报文的传输方式是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。（一个upd的最大报文长度2^16-1-20-8,20是ip报文头，8是udp报文头）</li>
+<li>面向字节流
+  面向字节流的话，虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。如果应用程序一次只发送一个字节，TCP也可以等待积累有足够多的字节后再构成报文段发送出去。</li>
+</ul>
+<p><strong>TCP应用场景</strong>：
+效率要求相对低，但对准确性要求相对高的场景。因为传输中需要对数据确认、重发、排序等操作，相比之下效率没有UDP高。举几个例子：文件传输（准确高要求高、但是速度可以相对慢）、接受邮件、远程登录。</p>
+<p><strong>UDP应用场景</strong>：
+效率要求相对高，对准确性要求相对低的场景。举几个例子：QQ聊天、在线视频、网络语音电话（即时通讯，速度要求高，但是出现偶尔断续不是太大问题，并且此处完全不可以使用重发机制）、广播通信（广播、多播）。</p>
               
             </div>
           </div>
@@ -189,10 +216,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../computer-design/" class="btn btn-neutral float-right" title="知识笔记-组成原理-基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../algorithm-analysis/" class="btn btn-neutral float-right" title="算法分析">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../OS-notes-concept/" class="btn btn-neutral" title="知识笔记-操作系统-基础概念"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../OS-notes-keynote/" class="btn btn-neutral" title="面试要点-操作系统篇"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -218,10 +245,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../OS-notes-concept/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../OS-notes-keynote/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../computer-design/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../algorithm-analysis/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
