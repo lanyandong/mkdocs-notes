@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Java程序设计-关键字this和super - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Java\u7a0b\u5e8f\u8bbe\u8ba1-\u5173\u952e\u5b57this\u548csuper";
+    var mkdocs_page_input_path = "notes\\language\\java\\java-super-this.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">面试知识</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../OS-notes-keynote/">面试要点-操作系统篇</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-network-keynote/">面试要点-计算机网络篇</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构-算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../algorithm-analysis/">算法分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../data-structure/">数据结构</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-network/">知识笔记-计算机网络-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-design/">知识笔记-组成原理-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../system-structure/">知识笔记-系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../software-engineering/">知识笔记-软件工程-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-introduction/">知识笔记-计算机基础-常用概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../java-collection/">Java程序设计-容器类库</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Java程序设计-关键字this和super</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#javathissuper">Java中this和super的用法区别</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java-multithreading/">Java程序设计-多线程基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java-jdbc/">Java程序设计-jdbc的使用.md</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../cpp-base-concept/">编程语言-C++常用基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../about/">其他</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>编程语言 &raquo;</li>
+        
+      
+    
+    <li>Java程序设计-关键字this和super</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="javathissuper">Java中this和super的用法区别</h3>
+<p><strong>this</strong>：this是自身的一个对象，代表对象本身，用法大致分为以下3类：</p>
+<ol>
+<li>普通直接引用当前对象本身</li>
+<li>形参和成员名重名，用this来区分</li>
+<li>引用构造方法 ，this(参数) ，应该为构造函数中的第一条语句，调用的事1本类中另外一种形式的构造方法。</li>
+</ol>
+<p><strong>super</strong>: super可以理解为是指向自己超（父）类对象,这个超类指的是离自己最近的一个父类。也大致分为3中中用法:</p>
+<ol>
+<li>普通的直接引用，与this类似，只不过它是父类对象，可以通过它调用父类成员。</li>
+<li>子类中的成员变量或方法与父类中的成员变量或方法同名，可以使用super区分。</li>
+<li>引用构造方法，super（参数）：调用父类中的某一个构造方法（应该为构造方法中的第一条语句）。</li>
+</ol>
+<pre><code class="java">class Person { 
+    public static void prt(String s) { 
+       System.out.println(s); 
+    } 
+    //构造方法(1) 
+    Person() { 
+       prt(&quot;父类·无参数构造方法： &quot;+&quot;A Person&quot;); 
+    }
+    //构造方法(2) 
+    Person(String name) { 
+       prt(&quot;父类·含一个参数的构造方法： &quot;+&quot;A person's name is &quot; + name); 
+    }
+} 
+
+public class Chinese extends Person { 
+    Chinese() { 
+       super(); // 调用父类构造方法（1） 
+       prt(&quot;子类·调用父类无参数构造方法&quot; + &quot;A chinese coder&quot;); 
+    } 
+
+    Chinese(String name) { 
+       super(name);// 调用父类具有相同形参的构造方法（2） 
+       prt(&quot;子类·调用父类”含一个参数的构造方法“： &quot;+&quot;his name is &quot; + name); 
+    } 
+
+    Chinese(String name, int age) { 
+       this(name);// 调用具有相同形参的构造方法（3）--&gt;调用(2)
+       prt(&quot;子类：调用子类具有相同形参的构造方法：his age is &quot; + age); 
+    } 
+
+    public static void main(String[] args) { 
+       Chinese cn = new Chinese(); 
+       cn = new Chinese(&quot;people&quot;); 
+       cn = new Chinese(&quot;people&quot;, 18); 
+    } 
+}
+</code></pre>
+
+<p><strong>总结</strong></p>
+<ol>
+<li>super()和this()类似,区别是，super()从子类中调用父类的构造方法，this()在同一类内调用其它方法。</li>
+<li>super()和this()均需放在构造方法内第一行。</li>
+<li>尽管可以用this调用一个构造器，但却不能调用两个。</li>
+<li>this和super不能同时出现在一个构造函数里面，因为this必然会调用其它的构造函数，其它的构造函数必然也会有super语句的存在，所以在同一个构造函数里面有相同的语句，就失去了语句的意义，编译器也不会通过。</li>
+<li>this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。</li>
+<li>从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../java-multithreading/" class="btn btn-neutral float-right" title="Java程序设计-多线程基础">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../java-collection/" class="btn btn-neutral" title="Java程序设计-容器类库"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../java-collection/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../java-multithreading/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>
