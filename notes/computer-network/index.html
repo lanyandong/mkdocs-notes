@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  
+  <meta name="author" content="ydlan">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>知识笔记-计算机网络-基础概念 - Learning Notes</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
@@ -97,6 +97,22 @@
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#_1">计算机网络基础概念</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_2">网络协议</a></li>
+        
+            <li><a class="toctree-l4" href="#ip">IP地址</a></li>
+        
+            <li><a class="toctree-l4" href="#_3">路由选择协议</a></li>
+        
+            <li><a class="toctree-l4" href="#tcp">TCP</a></li>
+        
+            <li><a class="toctree-l4" href="#udp">UDP</a></li>
+        
+            <li><a class="toctree-l4" href="#http">HTTP</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -189,6 +205,9 @@
     <li>知识笔记-计算机网络-基础概念</li>
     <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/computer-network.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
     </li>
   </ul>
   <hr/>
@@ -197,18 +216,65 @@
             <div class="section">
               
                 <h2 id="_1">计算机网络基础概念</h2>
-<p><strong>网络协议</strong>：简称协议（Protocol），语法、语义、同步三要素构成，是为网络中的数据交换建立的规则。</p>
-<p><strong>OSI/RM</strong>：物理层、数据链路层、网络层、运输层、会话层、表示层、应用层</p>
+<h3 id="_2">网络协议</h3>
+<p>网络协议简称协议（Protocol），语法、语义、同步三要素构成，是为网络中的数据交换建立的规则。</p>
+<p><strong>OSI：</strong>：物理层、数据链路层、网络层、运输层、会话层、表示层、应用层。</p>
 <p><strong>TCP/IP</strong>：网络接口层、网络层IP、运输层（TCP/UDP），应用层</p>
 <p><strong>五层协议</strong>：物理层、数据链路层、网络层、运输层、应用层</p>
+<p><img alt="network" src="../../img/network.gif" /></p>
+<p><strong>物理层</strong>：物理层确保原始的数据可在各种物理媒体上传输，有两个重要的设备是中继器和集线器。</p>
+<p><strong>数据链路层</strong>：该层的作用包括物理地址寻址、数据的成帧、流量控制、数据的检错、重发等，为网络层提供可靠的数据传输。主要的协议是以太网协议，两个重要设备是网桥和交换机。</p>
+<p><strong>网络层</strong>：网络层负责对子网间的数据包进行路由选择，还可以实现拥塞控制、网际互连等功能；基本数据单位为IP数据报，重要设备是路由器。主要的协议包括IP协议（Internet Protocol，因特网互联协议），ICMP协议（Internet Control Message Protocol，因特网控制报文协议），ARP协议（Address Resolution Protocol，地址解析协议），RARP协议（Reverse Address Resolution Protocol，逆地址解析协议）。</p>
+<p><strong>传输层</strong>：传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输以及端到端的差错控制和流量控制问题，重要设备是网关，主要的协议包括TCP协议（Transmission Control Protocol，传输控制协议）、UDP协议（User Datagram Protocol，用户数据报协议）。</p>
+<p><strong>应用层</strong>：为操作系统或网络应用程序提供访问网络服务的接口，主要协议包括：FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）。</p>
+<hr />
+<h3 id="ip">IP地址</h3>
+<p>IP地址(IPv4)由32位二进制数组成，分为4段（4个字节），每一段为8位二进制数（1个字节），每一段中间使用英文的标点符号“.”隔开，并使用十进制数表示（点分十进制表示法）。</p>
+<p><code>IP地址=网络地址+主机地址</code>。同一网段内的计算机网络部分相同，主机部分不同。路由器连接不同网段，负责不同网段之间的数据转发，交换机连接的是同一网段的计算机。</p>
+<p><img alt="ip" src="../../img/ip.png" /></p>
+<p>计算机在和其他计算机通信之前，首先要判断目标IP地址和自己的IP地址是否在一个网段，这决定了数据链层的目标MAC地址是目标计算机的还是路由器接口的MAC地址。数据包的目标IP地址决定了数据包最终到达哪一个计算机，而目标MAC地址决定了该数据包下一跳由哪个设备接收。</p>
+<p><strong>IP地址分类</strong></p>
+<p>IP地址分A、B、C、D、E五类，其中A、B、C这三类是比较常用的IP地址，D、E类为特殊地址。</p>
+<p><img alt="ip4" src="../../img/Ip4.png" /></p>
+<p>在计算机网络中，主机ID全部为0的地址为网络地址，而主机ID全部为1的地址为广播地址，这2个地址是不能分配给主机用的。</p>
+<p>例如：A类地址范围：1.0.0.0 - 126.255.255.255，其中0和127作为特殊地址。<code>默认子网掩码为255.0.0.0，也可以是/8，代表网络号为前面8位</code>。最大主机数量是256×256×256-2=166777214（减去1个主机位为0的网络地址和1个广播地址）。同理其他几类地址也是可以计算的（能够计算出对应的网络数和主机数）：</p>
+<p><img alt="ip" src="../../img/ipip.png" /></p>
+<p><strong>子网划分</strong></p>
+<p>子网划分就是将IP地址的主机号借用作为子网号，以起到增加网络数的目的，但同时也减少了主机数。子网掩码就是用来划分子网的，知道了子网掩码把它化为二进制就知道它占用的网络号和主机号位数。也可以通过子网掩码和IP地址进行与运算，就可以求出子网地址了。首先得清楚默认的子网掩码（A类地址255.0.0.0或者是/8，B类地址255.255.0.0或者是/16，C类地址255.255.255.0或者是/24）。举个例子：</p>
+<p>eg：一台IP地址为10.110.9.113/21主机在启动时发出的广播ip是多少？</p>
+<p>解：10.110.9.113/21 这是个IP地址，网络位是21位，不能只看它是A类地址就认为前面8位才是网络位，所以得出子网掩码是255.255.248.0(即11111111.11111111.11111000.00000000)，然后将子网掩码和IP地址进行与运算，得到子网网络地址10.110.8.0，用二进制表示10.110.00001000.00000000，广播地址主机位全为1，因此广播地址为10.110.00001111.11111111，即10.110.15.255。</p>
+<p><strong>IP与MAC</strong></p>
+<p>在数据通信时，IP地址专注于网络层，网络层设备（如路由器）根据IP地址，将数据包从一个网络传递转发到另外一个网络上；而MAC地址专注于数据链路层，数据链路层设备（如交换机）根据MAC地址，将一个数据帧从一个节点传送到相同链路的另一个节点上。IP和MAC地址这种映射关系由ARP（Address Resolution Protocol，地址解析协议）协议完成，ARP根据目的IP地址，找到中间节点的MAC地址，通过中间节点传送，从而最终到达目的网络。</p>
+<hr />
+<h3 id="_3">路由选择协议</h3>
+<p>常见的路由选择协议有：RIP协议、OSPF协议。</p>
 <ul>
-<li><strong>应用层</strong>：通过应用进程间的交互来实现特定网络应用</li>
-<li><strong>运输层</strong>：两台主机中进程之间的题的通信提供通用的数据传输服务</li>
-<li><strong>网络层</strong>：为分组交换网上的不同主机提供通信服务</li>
-<li><strong>数据链路层</strong>：两台主机传输数据，在一段段的链路上进行的，封装IP数据报为帧，帧包括同步信息，地址信息、差错控制等控制信息</li>
-<li><strong>物理层</strong>：物理层上传输的基本单位是bit（比特）</li>
+<li>RIP协议：底层是贝尔曼福特算法，它选择路由的度量标准（metric)是跳数，最大跳数是15跳，如果大于15跳，它就会丢弃数据包。</li>
+<li>OSPF协议：Open Shortest Path First开放式最短路径优先，底层是迪杰斯特拉算法，是链路状态路由选择协议，它选择路由的度量标准是带宽，延迟。</li>
 </ul>
 <hr />
+<h3 id="tcp">TCP</h3>
+<p>TCP是面向连接的通信协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。TCP提供的是一种可靠的数据流服务，采用“带重传的肯定确认”技术来实现传输的可靠性。TCP还采用一种称为“滑动窗口”的方式进行流量控制，所谓窗口实际表示接收能力，用以限制发送方的发送速度。</p>
+<p><strong>TCP三次握手和四次挥手</strong></p>
+<p><img alt="tcp" src="../../img/tcp.gif" /></p>
+<p><strong>注：seq</strong>:"sequance"序列号；<strong>ack</strong>:"acknowledge"确认号；<strong>SYN</strong>:"synchronize"请求同步标志；<strong>；ACK</strong>:"acknowledge"确认标志"<strong>；</strong><strong>FIN</strong>："Finally"结束标志。</p>
+<p>使用TCP的协议：FTP（文件传输协议）、Telnet（远程登录协议）、SMTP（简单邮件传输协议）、POP3（和SMTP相对，用于接收邮件）、HTTP协议等。</p>
+<hr />
+<h3 id="udp">UDP</h3>
+<p>UDP用户数据报协议，是面向无连接的通讯协议，UDP数据包括目的端口号和源端口号信息，由于通讯不需要连接，所以可以实现广播发送。UDP通讯时不需要接收方确认，属于不可靠的传输，可能会出现丢包现象，实际应用中要求程序员编程验证。</p>
+<p>使用UDP协议包括：TFTP（简单文件传输协议）、SNMP（简单网络管理协议）、DNS（域名解析协议）、NFS、BOOTP。</p>
+<hr />
+<h3 id="http">HTTP</h3>
+<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。</p>
+<p><strong>HTTP中POST与 GET的区别</strong></p>
+<ul>
+<li>Get是从服务器上获取数据，Post是向服务器传送数据。</li>
+<li>Get是把参数数据队列加到提交表单的Action属性所指向的URL中，值和表单内各个字段一一对应，在URL中可以看到。</li>
+<li>Get传送的数据量小，不能大于2KB；Post传送的数据量较大，一般被默认为不受限制。</li>
+<li>根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的。</li>
+</ul>
+<p><strong>HTTPS</strong>：</p>
+<p>是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</p>
               
             </div>
           </div>
@@ -243,6 +309,8 @@
 
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../OS-notes-concept/" style="color: #fcfcfc;">&laquo; Previous</a></span>
