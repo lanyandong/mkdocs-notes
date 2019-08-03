@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ydlan">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>知识笔记-组成原理-基础概念 - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u77e5\u8bc6\u7b14\u8bb0-\u7ec4\u6210\u539f\u7406-\u57fa\u7840\u6982\u5ff5";
+    var mkdocs_page_input_path = "notes\\computer-design.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">面试知识</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../OS-notes-keynote/">面试要点-操作系统篇</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../computer-network-keynote/">面试要点-计算机网络篇</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构-算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../algorithm-analysis/">算法分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data-structure/">数据结构</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../computer-network/">知识笔记-计算机网络-基础概念</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">知识笔记-组成原理-基础概念</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">指令周期</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_2">一、指令周期的基本概念</a></li>
+        
+            <li><a class="toctree-l4" href="#_3">二、指令周期的数据流</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#_4">参考资料</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../system-structure/">知识笔记-系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../software-engineering/">知识笔记-软件工程-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../computer-introduction/">知识笔记-计算机基础-常用概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../language/java/java-collection/">Java程序设计-容器类库</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/java/java-super-this/">Java程序设计-关键字this和super</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/java/java-multithreading/">Java程序设计-多线程基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/java/java-jdbc/">Java程序设计-jdbc的使用.md</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/cpp-base-concept/">编程语言-C++常用基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../language/python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../about/">其他</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>知识笔记 &raquo;</li>
+        
+      
+    
+    <li>知识笔记-组成原理-基础概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/computer-design.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">指令周期</h2>
+<h3 id="_2">一、指令周期的基本概念</h3>
+<p>CPU每取出并执行一条指令所需的全部时间叫指令周期，也即CPU完成一条指令的时间叫指令周期，如下图所示。图中的取指阶段完成取指令和分析指令的操作，又叫取指周期；执行阶段完成执行指令的操作，又叫执行周期。在大多数情况下， CPU就是按取指－执行－再取指－再执行……的顺序自动工作的。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s4.gif" /></p>
+<p>由于各种指令操作功能不同，因此各种指令的指令周期是不相同的。例如无条件转移指令JMP X， 在执行阶段不需访问主存，而且操作简单，完全可以在取指阶段的后期将转移地址X送至PC， 以达到转移的目的。这样， JMP X指令的指令周期就是取指周期。又如一地址格式的加法指令ADD X，在执行阶段首先要从X所指示的存储单元中取出操作数，然后和ACC的内容相加，结果存于ACC，故这种指令的指令周期在取指和执行阶段各访问一次存储器，其指令周期就包括两个存取周期。再如乘法指令，其执行阶段所要完成的操作比加法指令多得多，故它的执行周期超过了加法指令，如下图所示。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s5.gif" /></p>
+<p>此外，当遇到间接寻址的指令时，由于指令字中只给出操作数有效地址的地址，因此，为了取出操作数，需先访问一次存储器，取出有效地址，然后再访问存储器，取出操作数。这样，间接寻址的指令周期就包括取指周期、间址周期和执行周期三个阶段，其中间址周期用于取操作数的有效地址，因此间址周期介于取指周期和执行周期之间，如下图所示。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s6.gif" /></p>
+<p>由第五章可知，当CPU采用中断方式实现主机与I/O交换信息时，CPU在每条指令执行阶段结束前， 都要发中断查询信号，以检测是否有某个I/O提出中断请求。如果有请求，CPU则要进入中断响应阶段，又称中断周期。在这阶段， CPU必须将程序断点保存到存储器中。这样，一个完整的指令周期应包括取指、间址、执行和中断4个子周期，如下图所示。由于间址周期和中断周期不一定包含在每个指令周期内，故图中用菱形框判断。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s7.gif" /></p>
+<p>总之，上述4个周期都有CPU访存操作， 只是访存的目的不同。取指周期是为了取指令，间址周期是为了取有效地址，执行周期是为了取操作数(当指令为访存指令时)，中断周期是为了保存程序断点。这4个周期又可叫CPU的工作周期，为了区别它们，在CPU内可设置4个标志触发器，如下图所示。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s8.gif" /></p>
+<p>图中的FE、IND，EX和INT分别对应取指、间址、执行和中断4个周期，并以“1”状态表示有效；它们分别由1→FE、1→IND、1→EX和1→INT4个信号控制。
+设置CPU工作周期标志触发器对设计控制单元十分有利。 例如，在取指阶段，只要设置取指周期标志触发器FE为1， 由它控制取指阶段的各个操作，便获得对任何一条指令的取指命令序列。又如在间接寻址时，间址次数可由间址周期标志触发器IND确定，当它为“0”状态时，表示间址结束。再如对于一些执行周期不访存的指令(如转移指令，寄存器类型指令)，同样可以用它们的操作码与取指周期标志触发器的状态相“与”，作为相应微操作的控制条件。</p>
+<h3 id="_3">二、指令周期的数据流</h3>
+<p>为了便于分析指令周期中的数据流，假设CPU中有存储器地址寄存器MAR、存储器数据寄存器MDR、程序计数器PC和指令寄存器IR。</p>
+<h4 id="1">1. 取指周期的数据流</h4>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s9.gif" /></p>
+<p>上图是取指周期的数据流。PC中存放现行指令的地址，该地址送到MAR并送至地址总线， 然后由控制部件CU向存储器发出读命令，使对应MAR所指单元的内容(指令)经数据总线送至MDR，再送至IR，与此同时CU控制PC内容加1，形成下一条指令的地址。</p>
+<h4 id="2">2. 间址周期的数据流</h4>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s10.gif" /></p>
+<p>间址周期的数据流如上图所示。一旦取指周期结束，CU便检查IR中的内容，以确定其是否有间址操作， 如果需间址操作，则MDR中指示形式地址的右N位将被送至MAR，又送至地址总线，此后CU向存储器发读命令，并获取有效地址并存至MDR。</p>
+<h4 id="3">3. 执行周期的数据流</h4>
+<p>由于不同的指令在执行周期的操作不同，因此执行周期的数据流是多种多样的， 可能涉及到CPU内部寄存器间的数据传送、或对存储器(或I/O)进行读写操作、或对ALU的操作，因此，无法用统一的数据流图表示。</p>
+<h4 id="4">4. 中断周期的数据流</h4>
+<p>CPU进入中断周期要完成一系列操作， 其中PC当前的内容必须保存起来，以待执行完中断服务程序后可准确返回到该程序的间断处，这一操作的数据流如下图所示。</p>
+<p><img alt="img" src="http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/image/s11.gif" /></p>
+<p>图中由CU把用于保存程序断点的存储器特殊地址（如堆栈指针的内容）送往MAR，并送到地址总线上， 同时将PC的内容（程序断点）送到MDR，并命令存储器写，最终使程序断点经数据总线存入存储器。此外，还需将中断服务程序的入口地址送至PC，为下一个指令周期的取指周期作好准备。</p>
+<h2 id="_4">参考资料</h2>
+<p>指令周期的原文地址：http://media4.open.com.cn/l603/fushi/0903/jisuanjzcyl/web/lesson/char8/j2.htm?tdsourcetag=s_pctim_aiomsg</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../system-structure/" class="btn btn-neutral float-right" title="知识笔记-系统结构-基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../computer-network/" class="btn btn-neutral" title="知识笔记-计算机网络-基础概念"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../computer-network/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../system-structure/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

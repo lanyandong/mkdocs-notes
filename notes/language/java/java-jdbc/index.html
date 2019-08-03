@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ydlan">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Java程序设计-jdbc的使用.md - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Java\u7a0b\u5e8f\u8bbe\u8ba1-jdbc\u7684\u4f7f\u7528.md";
+    var mkdocs_page_input_path = "notes\\language\\java\\java-jdbc.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">面试知识</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../OS-notes-keynote/">面试要点-操作系统篇</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-network-keynote/">面试要点-计算机网络篇</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构-算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../algorithm-analysis/">算法分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../data-structure/">数据结构</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-network/">知识笔记-计算机网络-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-design/">知识笔记-组成原理-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../system-structure/">知识笔记-系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../software-engineering/">知识笔记-软件工程-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../computer-introduction/">知识笔记-计算机基础-常用概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../java-collection/">Java程序设计-容器类库</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java-super-this/">Java程序设计-关键字this和super</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java-multithreading/">Java程序设计-多线程基础</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Java程序设计-jdbc的使用.md</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#jdbc">jdbc基本使用流程</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../cpp-base-concept/">编程语言-C++常用基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../about/">其他</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>编程语言 &raquo;</li>
+        
+      
+    
+    <li>Java程序设计-jdbc的使用.md</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/language/java/java-jdbc.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="jdbc">jdbc基本使用流程</h3>
+<p>第一次使用的话，需要使用mysql 的jdbc 驱动jar包。为了对数据库进行增删改查，首先需要与数据库进行连接，通常使用jdbc，具体的步骤流程如下：</p>
+<p>1、首先建立连接，步骤是基本是固定的：</p>
+<pre><code class="java">import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Main {
+
+    static String url = &quot;jdbc:mysql://localhost:3306/studenttest?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT&quot;;
+    static String user = &quot;root&quot;;
+    static String password =&quot;&quot;;
+    public static void main(String[] args) throws Exception {
+        //1.注册驱动
+        Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+        //2.获取连接
+        java.sql.Connection con = DriverManager.getConnection(url, user, password);
+        //3.获得预处理对象
+        String updsql = &quot;update student set name=? where id=?&quot;;
+        String selsql = &quot;select * from student&quot;;
+        PreparedStatement stat = con.prepareStatement(updsql);
+        PreparedStatement stat2 = con.prepareStatement(selsql);
+        //4.SQL语句占位符设置实际参数
+        //SQL语句占位符设置实际参数（占位符就是先占住一个固定的位置，等着你再往里面添加内容的符号，广泛用于计算机中各类文档的编辑）
+        stat.setString(1, &quot;小明&quot;);    //索引参数1代表着sql中的第一个？号，也就是我需要将条件id所对应的name数据更新为“小明”
+        stat.setString(2, &quot;2016222&quot;);//索引参数2代表着sql中的第二个？号，也就是条件是id为&quot;2016222&quot;
+        //5.执行SQL语句,
+        int line = stat.executeUpdate(); //int executeUpdate(); --执行insert update delete语句。
+        System.out.println(&quot;更新记录数&quot;+ line);
+
+        ResultSet rs = stat2.executeQuery(selsql);//ResultSet executeQuery(); --执行select语句。
+        while(rs.next()) {
+            String id = rs.getString(&quot;id&quot;);
+            String name = rs.getString(&quot;name&quot;);
+            String gendar = rs.getString(&quot;gendar&quot;);
+            String age = rs.getString(&quot;age&quot;);
+            System.out.println(&quot;id=&quot; + id + &quot;\tname=&quot; + name + &quot;\t&quot; + &quot;\t&quot; + &quot;gendar=&quot; + gendar + &quot;\tage=&quot; + age);  
+        }
+
+        //6.释放资源
+        stat.close();
+        stat2.close();
+        con.close();
+    }
+}
+</code></pre>
+
+<p>2、关于<code>PreparedStatement</code>接口</p>
+<p><code>Statement</code> 对象用于将SQL语句发送到数据库中执行，并从数据库中读取结果，执行的是不带参数的静态SQL语句。</p>
+<p>而 <code>PreparedStatement</code> 接口是<code>Statement</code> 的子接口，可以用于执行动态的SQL语句的。SQL 语句被预编译并存储在 <code>PreparedStatement</code> 对象中，然后可以使用此对象多次高效地执行该语句。当然 <code>PreparedStatement</code> 对象也可以用于执行不带参数的预编译SQL语句。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../cpp-base-concept/" class="btn btn-neutral float-right" title="编程语言-C++常用基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../java-multithreading/" class="btn btn-neutral" title="Java程序设计-多线程基础"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../java-multithreading/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../cpp-base-concept/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>
