@@ -70,15 +70,51 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">数据结构-算法</span>
+    <span class="caption-text">数据结构和算法</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../algorithm-analysis/">算法分析</a>
+    <a class="" href="../datastructure-algorithm/algorithm-analysis/">算法-复杂度分析</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../data-structure/">数据结构</a>
+    <a class="" href="../datastructure-algorithm/sort-algorithm/">算法-排序-总结</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/simplesort/">算法-排序-简单排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/mergesort/">算法-排序-归并排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/shellsort/">算法-排序-Shell排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/quicksort/">算法-排序-快速排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/redixsort/">算法-排序-基数算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/recursion/">算法-递归算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/stack-queue/">数据结构-栈和队列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/linklist/">数据结构-链表</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datastructure-algorithm/tree/">数据结构-树</a>
                 </li>
     </ul>
 	    </li>
@@ -221,7 +257,7 @@
 <p><strong>OSI：</strong>：物理层、数据链路层、网络层、运输层、会话层、表示层、应用层。</p>
 <p><strong>TCP/IP</strong>：网络接口层、网络层IP、运输层（TCP/UDP），应用层</p>
 <p><strong>五层协议</strong>：物理层、数据链路层、网络层、运输层、应用层</p>
-<p><img alt="network" src="../../img/network.gif" /></p>
+<p><img alt="network" src="../../img/network-framework.gif" /></p>
 <p><strong>物理层</strong>：物理层确保原始的数据可在各种物理媒体上传输，有两个重要的设备是中继器和集线器。</p>
 <p><strong>数据链路层</strong>：该层的作用包括物理地址寻址、数据的成帧、流量控制、数据的检错、重发等，为网络层提供可靠的数据传输。主要的协议是以太网协议，两个重要设备是网桥和交换机。</p>
 <p><strong>网络层</strong>：网络层负责对子网间的数据包进行路由选择，还可以实现拥塞控制、网际互连等功能；基本数据单位为IP数据报，重要设备是路由器。主要的协议包括IP协议（Internet Protocol，因特网互联协议），ICMP协议（Internet Control Message Protocol，因特网控制报文协议），ARP协议（Address Resolution Protocol，地址解析协议），RARP协议（Reverse Address Resolution Protocol，逆地址解析协议）。</p>
@@ -235,10 +271,10 @@
 <p>计算机在和其他计算机通信之前，首先要判断目标IP地址和自己的IP地址是否在一个网段，这决定了数据链层的目标MAC地址是目标计算机的还是路由器接口的MAC地址。数据包的目标IP地址决定了数据包最终到达哪一个计算机，而目标MAC地址决定了该数据包下一跳由哪个设备接收。</p>
 <p><strong>IP地址分类</strong></p>
 <p>IP地址分A、B、C、D、E五类，其中A、B、C这三类是比较常用的IP地址，D、E类为特殊地址。</p>
-<p><img alt="ip4" src="../../img/Ip4.png" /></p>
+<p><img alt="ip4" src="../../img/ipv4-addr.png" /></p>
 <p>在计算机网络中，主机ID全部为0的地址为网络地址，而主机ID全部为1的地址为广播地址，这2个地址是不能分配给主机用的。</p>
 <p>例如：A类地址范围：1.0.0.0 - 126.255.255.255，其中0和127作为特殊地址。<code>默认子网掩码为255.0.0.0，也可以是/8，代表网络号为前面8位</code>。最大主机数量是256×256×256-2=166777214（减去1个主机位为0的网络地址和1个广播地址）。同理其他几类地址也是可以计算的（能够计算出对应的网络数和主机数）：</p>
-<p><img alt="ip" src="../../img/ipip.png" /></p>
+<p><img alt="ip" src="../../img/ipv4-addr2.png" /></p>
 <p><strong>子网划分</strong></p>
 <p>子网划分就是将IP地址的主机号借用作为子网号，以起到增加网络数的目的，但同时也减少了主机数。子网掩码就是用来划分子网的，知道了子网掩码把它化为二进制就知道它占用的网络号和主机号位数。也可以通过子网掩码和IP地址进行与运算，就可以求出子网地址了。首先得清楚默认的子网掩码（A类地址255.0.0.0或者是/8，B类地址255.255.0.0或者是/16，C类地址255.255.255.0或者是/24）。举个例子：</p>
 <p>eg：一台IP地址为10.110.9.113/21主机在启动时发出的广播ip是多少？</p>

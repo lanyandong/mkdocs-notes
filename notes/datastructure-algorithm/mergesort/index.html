@@ -8,7 +8,7 @@
   
   <meta name="author" content="ydlan">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Java - Learning Notes</title>
+  <title>算法-排序-归并排序 - Learning Notes</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Java";
-    var mkdocs_page_input_path = "notes\\language\\java.md";
+    var mkdocs_page_name = "\u7b97\u6cd5-\u6392\u5e8f-\u5f52\u5e76\u6392\u5e8f";
+    var mkdocs_page_input_path = "notes\\datastructure-algorithm\\mergesort.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -70,15 +70,57 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">数据结构-算法</span>
+    <span class="caption-text">数据结构和算法</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../algorithm-analysis/">算法分析</a>
+    <a class="" href="../algorithm-analysis/">算法-复杂度分析</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../data-structure/">数据结构</a>
+    <a class="" href="../sort-algorithm/">算法-排序-总结</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simplesort/">算法-排序-简单排序</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">算法-排序-归并排序</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">归并排序</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shellsort/">算法-排序-Shell排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../quicksort/">算法-排序-快速排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../redixsort/">算法-排序-基数算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../recursion/">算法-递归算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stack-queue/">数据结构-栈和队列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linklist/">数据结构-链表</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tree/">数据结构-树</a>
                 </li>
     </ul>
 	    </li>
@@ -120,31 +162,31 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="java-collection/">Java程序设计-容器类库</a>
+    <a class="" href="../../language/java/java-collection/">Java程序设计-容器类库</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="java-super-this/">Java程序设计-关键字this和super</a>
+    <a class="" href="../../language/java/java-super-this/">Java程序设计-关键字this和super</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="java-multithreading/">Java程序设计-多线程基础</a>
+    <a class="" href="../../language/java/java-multithreading/">Java程序设计-多线程基础</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="java-jdbc/">Java程序设计-jdbc的使用.md</a>
+    <a class="" href="../../language/java/java-jdbc/">Java程序设计-jdbc的使用.md</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../cpp-base-concept/">编程语言-C++常用基础概念</a>
+    <a class="" href="../../language/cpp-base-concept/">编程语言-C++常用基础概念</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../optimized-cpp/">编程语言-C++性能优化指南</a>
+    <a class="" href="../../language/optimized-cpp/">编程语言-C++性能优化指南</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../python/">编程语言-Python编程基础</a>
+    <a class="" href="../../language/python/">编程语言-Python编程基础</a>
                 </li>
     </ul>
 	    </li>
@@ -175,11 +217,15 @@
     <li><a href="../../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>数据结构和算法 &raquo;</li>
+        
+      
     
-    <li>Java</li>
+    <li>算法-排序-归并排序</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/language/java.md"
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/datastructure-algorithm/mergesort.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -189,11 +235,122 @@
           <div role="main">
             <div class="section">
               
-                
+                <h2 id="_1">归并排序</h2>
+<p>归并排序利用了分治的思想，也使用了递归的方法，递归算法在后面还有更详细的介绍，这里主要是讨论排序算法，归并排序主要是通过将一个序列拆分为若干个子序列，将子序列进行调整为有序，然后将有序子序列合并为整体有序列。</p>
+<p>归并排序动图演示如下：</p>
+<p><img alt="mergesort" src="../../../img/mergesort.gif" /></p>
+<p>归并排序需要O(n*logN) 的时间，而且需要一个大小和原数组大小相等的数组空间作为辅助数组。实例代码需要理解的merge方法是如何执行的，这是整个算法的关键和难点。</p>
+<pre><code class="java">package algorithm;
+
+import static java.lang.Math.random;
+
+public class MergeSort {
+
+    public static void main(String[] args) {
+
+        int maxSize = 16;
+        MergeSortArr arr = new MergeSortArr(maxSize);
+
+        for(int i = 0; i &lt; maxSize; i++){
+            int value = (int)(random() * 99);
+            arr.insert(value);
+        }
+
+        arr.display();
+
+        arr.mergeSort();
+
+        arr.display();
+    }
+}
+
+
+class MergeSortArr{
+
+    private int theArray[];
+    private int nElems;
+
+    public MergeSortArr(int size){
+        theArray = new int[size];
+        nElems = 0;
+    }
+
+    public void insert(int value){
+        theArray[nElems] = value;
+        nElems++;
+    }
+
+    public void display(){
+
+        System.out.print(&quot;theArray: &quot;);
+        for (int i = 0; i &lt; nElems; i++) {
+            System.out.print(theArray[i] + &quot; &quot;);
+        }
+        System.out.println();
+    }
+
+    public void mergeSort(){
+        int arr[] = new int[nElems];  // 辅助数组
+        recMergeSort(arr, 0 , nElems-1);
+    }
+
+
+    public void recMergeSort(int arr[], int start, int end){
+        if(start &lt; end){
+            int mid = (start + end)/2;
+
+            recMergeSort(arr, start, mid); // 前半部分
+            recMergeSort(arr, mid+1, end); // 后半部分
+
+            merge(arr, start, mid, end);  // 合并
+        }
+    }
+
+
+    private void merge(int[] temp, int left, int mid, int right) {
+
+        int tempPtr = left; // 存放
+
+        int leftPtr = left; // 检测
+        int midPtr = mid + 1;
+
+        while (leftPtr &lt;= mid &amp;&amp; midPtr &lt;= right){
+            if(theArray[leftPtr] &lt;= theArray[midPtr]){
+                temp[tempPtr++] = theArray[leftPtr++];
+            }
+            else
+                temp[tempPtr++] = theArray[midPtr++];
+        }
+
+        while(leftPtr &lt;= mid){
+            temp[tempPtr++] = theArray[leftPtr++];
+        }
+
+        while (midPtr &lt;= right){
+            temp[tempPtr++] = theArray[midPtr++];
+        }
+
+        // 存回
+        for (int i = left; i &lt;= right ; i++) {
+            theArray[i] = temp[i];
+        }
+    }
+}
+
+</code></pre>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../shellsort/" class="btn btn-neutral float-right" title="算法-排序-Shell排序">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../simplesort/" class="btn btn-neutral" title="算法-排序-简单排序"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -219,6 +376,10 @@
           <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../simplesort/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../shellsort/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
