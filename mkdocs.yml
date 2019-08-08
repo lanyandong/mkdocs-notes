@@ -18,9 +18,27 @@ nav:
         - 面试要点-操作系统篇: notes/OS-notes-keynote.md
         - 面试要点-计算机网络篇: notes/computer-network-keynote.md
         
-- 数据结构-算法:
-       - 算法分析: notes/algorithm-analysis.md
-       - 数据结构: notes/data-structure.md
+- 数据结构和算法:
+       - 算法-复杂度分析: notes/datastructure-algorithm/algorithm-analysis.md
+       - 算法-排序-总结: notes/datastructure-algorithm/sort-algorithm.md
+       - 算法-排序-简单排序: notes/datastructure-algorithm/simplesort.md
+       - 算法-排序-归并排序: notes/datastructure-algorithm/mergesort.md
+       - 算法-排序-Shell排序: notes/datastructure-algorithm/shellsort.md
+       - 算法-排序-快速排序: notes/datastructure-algorithm/quicksort.md
+       - 算法-排序-基数排序: notes/datastructure-algorithm/redixsort.md
+       - 算法-排序-堆排序: notes/datastructure-algorithm/heapsort.md
+       - 算法-递归算法: notes/datastructure-algorithm/recursion.md 
+       
+       - 数据结构-栈和队列: notes/datastructure-algorithm/stack-queue.md
+       - 数据结构-链表: notes/datastructure-algorithm/linklist.md
+       - 数据结构-树-二叉树: notes/datastructure-algorithm/BST.md
+       - 数据结构-树-红黑树: notes/datastructure-algorithm/RBTree.md
+       - 数据结构-树-多叉树: notes/datastructure-algorithm/tree.md
+       - 数据结构-散列: notes/datastructure-algorithm/hash.md
+       - 数据结构-堆(Heap): notes/datastructure-algorithm/heap.md
+       - 数据结构-图(Graph): notes/datastructure-algorithm/graph.md 
+       - 数据结构-图-搜索: notes/datastructure-algorithm/dfs-bfs.md
+       - 数据结构-图-应用: notes/datastructure-algorithm/graph-algorithm.md
             
 - 知识笔记:
         - 知识笔记-操作系统-基础概念: notes/OS-notes-concept.md
