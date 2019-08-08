@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ydlan">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>数据结构-树-红黑树 - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6570\u636e\u7ed3\u6784-\u6811-\u7ea2\u9ed1\u6811";
+    var mkdocs_page_input_path = "notes\\datastructure-algorithm\\RBTree.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">面试知识</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-keynote/">面试要点-操作系统篇</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-network-keynote/">面试要点-计算机网络篇</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构和算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../algorithm-analysis/">算法-复杂度分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sort-algorithm/">算法-排序-总结</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simplesort/">算法-排序-简单排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mergesort/">算法-排序-归并排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shellsort/">算法-排序-Shell排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../quicksort/">算法-排序-快速排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../redixsort/">算法-排序-基数排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../heapsort/">算法-排序-堆排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../recursion/">算法-递归算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stack-queue/">数据结构-栈和队列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linklist/">数据结构-链表</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../BST/">数据结构-树-二叉树</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">数据结构-树-红黑树</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">红黑树</a></li>
+    
+
+    <li class="toctree-l3"><a href="#avl">AVL树</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tree/">数据结构-树-多叉树</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hash/">数据结构-散列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../heap/">数据结构-堆(Heap)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../graph/">数据结构-图(Graph)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dfs-bfs/">数据结构-图-搜索</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../graph-algorithm/">数据结构-图-应用</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-network/">知识笔记-计算机网络-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-design/">知识笔记-组成原理-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-structure/">知识笔记-系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../software-engineering/">知识笔记-软件工程-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-introduction/">知识笔记-计算机基础-常用概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../language/java/java-collection/">Java程序设计-容器类库</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/java/java-super-this/">Java程序设计-关键字this和super</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/java/java-multithreading/">Java程序设计-多线程基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/java/java-jdbc/">Java程序设计-jdbc的使用.md</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/cpp-base-concept/">编程语言-C++常用基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../language/python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../about/">其他</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>数据结构和算法 &raquo;</li>
+        
+      
+    
+    <li>数据结构-树-红黑树</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/datastructure-algorithm/RBTree.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="_1">红黑树</h3>
+<p>红黑树是一个重要而常用的平衡二叉树，解决了BST插入导致的不平衡问题，而且效率也比较高，它究竟利用什么机制来维持平衡呢？</p>
+<p>红黑树-规则（保证一棵树平衡）</p>
+<ol>
+<li>每个节点不是红色就是黑色</li>
+<li>根总是黑色</li>
+<li>如果节点是红色的，则它的子节点必须是黑的</li>
+<li>从根到叶子节点或是空子节点的路径中，必须有相同数目的黑色节点。</li>
+</ol>
+<p>修正违规情况：</p>
+<ol>
+<li>
+<p>改变节点颜色</p>
+</li>
+<li>
+<p>执行旋转操作</p>
+</li>
+</ol>
+<p><img alt="RBTree" src="../../../img/RedBT.jpg" /></p>
+<p>红黑树的为了维持平衡，当插入数据不满足红黑树规则时，需要通过改变节点颜色，或者是旋转操作，这些操作通常的互相影响的，有一种牵一发而动全身的感觉，所以代码实现起来也是相对困难的，这里大致了解一个原理即可。</p>
+<p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(lgn)，效率非常之高。例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的。</p>
+<h3 id="avl">AVL树</h3>
+<p>平衡二叉树，本质上是二叉搜索树，但带有平衡条件，即它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<p><img alt="avl" src="../../../img/AVL.jpg" /></p>
+<p>优点：由于插入方式不同导致树的高度也有所不同，可能会导致二叉树的高度是O(N)，而AVL树就不会出现这种情况，树的高度始终是O(logN).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tree/" class="btn btn-neutral float-right" title="数据结构-树-多叉树">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../BST/" class="btn btn-neutral" title="数据结构-树-二叉树"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../BST/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../tree/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

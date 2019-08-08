@@ -8,7 +8,7 @@
   
   <meta name="author" content="ydlan">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>数据结构-树 - Learning Notes</title>
+  <title>数据结构-树-多叉树 - Learning Notes</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u6570\u636e\u7ed3\u6784-\u6811";
+    var mkdocs_page_name = "\u6570\u636e\u7ed3\u6784-\u6811-\u591a\u53c9\u6811";
     var mkdocs_page_input_path = "notes\\datastructure-algorithm\\tree.md";
     var mkdocs_page_url = null;
   </script>
@@ -98,7 +98,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../redixsort/">算法-排序-基数算法</a>
+    <a class="" href="../redixsort/">算法-排序-基数排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../heapsort/">算法-排序-堆排序</a>
                 </li>
                 <li class="">
                     
@@ -112,15 +116,49 @@
                     
     <a class="" href="../linklist/">数据结构-链表</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../BST/">数据结构-树-二叉树</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../RBTree/">数据结构-树-红黑树</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">数据结构-树</a>
+    <a class="current" href="./">数据结构-树-多叉树</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#_1">树</a></li>
+    <li class="toctree-l3"><a href="#2-3-4">2-3-4树</a></li>
+    
+
+    <li class="toctree-l3"><a href="#b">B树</a></li>
+    
+
+    <li class="toctree-l3"><a href="#b_1">B+树</a></li>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hash/">数据结构-散列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../heap/">数据结构-堆(Heap)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../graph/">数据结构-图(Graph)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dfs-bfs/">数据结构-图-搜索</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../graph-algorithm/">数据结构-图-应用</a>
                 </li>
     </ul>
 	    </li>
@@ -222,7 +260,7 @@
         
       
     
-    <li>数据结构-树</li>
+    <li>数据结构-树-多叉树</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/datastructure-algorithm/tree.md"
@@ -235,359 +273,33 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">树</h2>
-<p>树是一个很有意思的数据结构，有很多树结构，比如BST，红黑树，2-3-4树，B树等。</p>
-<p>BST的删除</p>
-<p><img alt="bst" src="../../../img/BST-delete.jpg" /></p>
-<p><img alt="bst" src="../../../img/BST-delete2.png" /></p>
-<pre><code class="java">package datastructure;
-
-import java.util.Stack;
-
-public class TreeApp {
-
-    public static void main(String[] args) {
-
-        Tree theTree = new Tree();
-
-        theTree.insert(13, 11);
-        theTree.insert(1, 2.3);
-        theTree.insert(4,5.7);
-        theTree.insert(21, 2.3);
-        theTree.insert(41,5.7);
-        theTree.insert(3, 11);
-
-        System.out.println(&quot;展示：&quot;);
-        theTree.displayTree();
-
-        System.out.println(&quot;查找：&quot;);
-        int value = 21;
-        Node found = theTree.find(value);
-        if(found != null){
-            System.out.print(&quot;Found: &quot;);
-            found.displayNode();
-            System.out.println();
-        }
-        else
-            System.out.println(&quot;No Found&quot;);
-
-
-        System.out.println(&quot;遍历：(1:前序，2：中序，3：中序)&quot;);
-        theTree.traverse(1);
-        theTree.traverse(2);
-        theTree.traverse(3);
-
-
-        System.out.println(&quot;删除：&quot;);
-        boolean delete = theTree.delete(value);
-        if(delete){
-            System.out.println(&quot;Delete: &quot;  + value);
-        }
-        else
-            System.out.println(&quot;Can't delete&quot;);
-
-
-        System.out.println(&quot;展示：&quot;);
-        theTree.displayTree();
-
-    }
-}
-
-
-class Node{
-
-    public int iData;    // 树节点的数据结构
-    public double dData;
-
-    public Node leftChild;
-    public Node rightChild;
-
-
-    public void displayNode(){
-
-        System.out.println(&quot;{&quot; + iData + &quot;,&quot; + dData + &quot;}&quot;);
-    }
-}
-
-class Tree{
-    public Node root;
-
-    public Tree(){
-        root = null;
-    }
-
-
-    public Node find(int key){
-        Node current  = root;
-
-        while(current.iData != key){
-
-            if(key &lt; current.iData){
-                current = current.leftChild;
-            }
-            else
-                current =current.rightChild;
-
-            if(current == null){
-                return null;
-            }
-        }
-        return current;
-    }
-
-
-    public void insert(int id, double dd){
-
-        Node newNode = new Node();
-        newNode.iData = id;
-        newNode.dData = dd;
-
-        if(root == null){
-            root = newNode;
-        }
-        else{
-            Node current = root;
-            Node parent;
-
-            while(true){
-
-                parent = current;  // 先将当前节点保存为父亲节点
-
-                if(id &lt; current.iData){
-                    current = current.leftChild;
-
-                    if(current == null){
-                        parent.leftChild = newNode;
-                        return;
-                    }
-                }
-                else {
-                    current = current.rightChild;
-
-                    if (current == null){
-                        parent.rightChild = newNode;
-                        return;
-                    }
-                }
-            }
-        }
-    }
-
-
-    // 删除节点，考虑的情况比较多
-
-    public boolean delete(int key){
-
-        Node current = root;
-        Node parent = root;
-
-        boolean isLeftChild = true;
-
-        // 寻找节点
-        while(current.iData != key){
-            parent = current;
-
-            if(key &lt; current.iData){
-                isLeftChild = true;
-                current = current.leftChild;
-            }
-            else{
-                isLeftChild = false;
-                current = current.rightChild;
-            }
-
-            if (current == null){
-                return false;
-            }
-        }
-
-
-        // 没有子节点(是root？isLeftChild？)
-        if(current.leftChild == null &amp;&amp; current.rightChild == null){
-            if(current == root){
-                root = null;
-            }
-            else if(isLeftChild){
-                parent.leftChild = null;
-            }
-            else {
-                parent.rightChild = null;
-            }
-        }
-        else if(current.rightChild == null){
-            // 没有右子节点
-            if(current == root){
-                root = current.leftChild;
-            }
-            else if(isLeftChild){
-                parent.leftChild = current.leftChild;
-            }
-            else
-                parent.rightChild = current.leftChild;
-        }
-        else if(current.leftChild == null){
-            // 没有左子节点
-            if (current == root){
-                root = current.rightChild;
-            }
-            else if(isLeftChild){
-                parent.leftChild = current.rightChild;
-            }
-            else
-                parent.rightChild = current.rightChild;
-        }
-
-        else{
-            // 既有左子节点，又有右子节点
-            // 中序后继代替，找出后继节点
-            Node successor = getSuccessor(current);
-
-            if(current == root){
-                root = current;
-            }
-            else if(isLeftChild){
-                current.leftChild = successor;
-            }
-            else
-                current.rightChild =successor;
-
-            // 把当前节点的左子节点，设置为后继节点的左子节点
-            successor.leftChild = current.leftChild;
-        }
-
-        return true;
-    }
-
-
-    private Node getSuccessor(Node delNode) {
-        Node successorParent = delNode;
-        Node successor = delNode;
-        Node current = delNode.rightChild; // 查找删除节点的右子树
-
-        while (current != null){
-            successorParent = successor; // 保存后继节点
-
-            successor = current;
-            current = current.leftChild; // 找左子节点
-        }
-
-        if(successor != delNode.rightChild){
-            // 后继节点为左子节点
-            successorParent.leftChild = successor.rightChild;
-            successor.rightChild = delNode.rightChild;
-
-        }
-        return successor; // 返回后继节点
-    }
-
-    // 树的遍历(前序，中序，后序)
-    public void traverse(int traverseType){
-        switch (traverseType){
-            case 1:
-                System.out.println(&quot;前序遍历：&quot;);
-                preOrder(root);
-                break;
-
-            case 2:
-                System.out.println(&quot;中序遍历：&quot;);
-                inOrder(root);
-                break;
-
-            case 3:
-                System.out.println(&quot;后序遍历：&quot;);
-                postOrder(root);
-                break;
-        }
-        System.out.println();
-    }
-
-    // 前序遍历
-    // 1.访问节点，2.调用自身遍历该节点的左子树，3.调用自身遍历该节点的右子树
-    private void preOrder(Node localRoot) {
-        if (localRoot != null){
-
-            System.out.print(localRoot.iData + &quot; &quot;);
-            preOrder(localRoot.leftChild);
-            preOrder(localRoot.rightChild);
-        }
-
-    }
-
-    private void inOrder(Node localRoot) {
-
-        if (localRoot != null){
-
-            preOrder(localRoot.leftChild);
-            System.out.print(localRoot.iData + &quot; &quot;);
-            preOrder(localRoot.rightChild);
-        }
-
-    }
-
-    private void postOrder(Node localRoot) {
-        if (localRoot != null){
-
-            preOrder(localRoot.leftChild);
-            preOrder(localRoot.rightChild);
-            System.out.print(localRoot.iData + &quot; &quot;);
-        }
-    }
-
-
-    public void displayTree(){
-
-
-        java.util.Stack globalStack = new Stack();
-        globalStack.push(root);
-
-        int nBlanks = 32;
-        boolean isRowEmpty = false;
-        System.out.println(&quot;.............................................&quot;);
-        while (isRowEmpty == false){
-
-            java.util.Stack localStack = new Stack();
-            isRowEmpty = true;
-
-            for (int i = 0; i &lt; nBlanks ; i++) {
-                System.out.print(' ');
-            }
-
-            while (globalStack.isEmpty() == false){
-                Node temp = (Node)globalStack.pop();
-
-                if(temp != null){
-                    System.out.print(temp.iData);
-                    localStack.push(temp.leftChild);
-                    localStack.push(temp.rightChild);
-
-                    if(temp.leftChild != null || temp.rightChild != null){
-                        isRowEmpty = false;
-                    }
-                }
-                else{
-                    System.out.print(&quot;--&quot;);
-                    localStack.push(null);
-                    localStack.push(null);
-                }
-
-                for (int j = 0; j &lt; nBlanks * 2 - 2; j++ ){
-                    System.out.print(' ');
-                }
-            }
-            System.out.println();
-
-            nBlanks /= 2;
-
-            while (localStack.isEmpty() == false){
-                globalStack.push(localStack.pop());
-            }
-        }
-
-        System.out.println(&quot;.............................................&quot;);
-    }
-}
-
-</code></pre>
+                <h3 id="2-3-4">2-3-4树</h3>
+<p>2-3-4树是一棵自平衡的多路查找树，它的任一节点只能是1个或2个或3个key，对应的子节点为2个子节点或3个子节点或4个子节点，所有叶子节点到根节点的长度一致。</p>
+<p>并且每个节点的key从左到右保持了从小到大的顺序，两个key之间的子树中所有的key一定大于它的父节点的左key，小于父节点的右key，对于3个key的节点，两两key之间也是如此。</p>
+<p><img alt="234tree" src="../../../img/234tree.png" /></p>
+<p>分析2-3-4树我们可以和红黑树作比较分析。红-黑树的层数（平衡二叉树）大约是log2(N+1)，而2-3-4树每个节点可以最多有4个数据项，如果节点都是满的，那么高度和log4N。但实际情况结点不可能是满的，所以2-3-4树的高度为log2N,2-3-4树很浪费空间，因为很多情况结点还不满一般，即使高度比红黑树小，但效率仍比红黑树稍差一些。</p>
+<h3 id="b">B树</h3>
+<p>B树为了存储设备或者磁盘而设计的一种平衡查找树，B树的节点可以有很多个子节点，从几个到几万个不等。一棵m阶的B树定义为：</p>
+<ul>
+<li>树中的每个结点最多含有m个孩子；</li>
+<li>除了根结点和叶子结点，其他结点至少有[ceil(m / 2)（代表是取上限的函数）]个孩子；</li>
+<li>若根结点不是叶子结点时，则至少有两个孩子（除了没有孩子的根结点）</li>
+<li>所有的叶子结点都出现在同一层中，叶子结点不包含任何关键字信息；</li>
+</ul>
+<p>下图是一个M=4 阶的B树:</p>
+<p><img alt="BTree" src="../../../img/BTree.png" /></p>
+<h3 id="b_1">B+树</h3>
+<p>B+树可以说是B树的一种变形，它把数据都存储在叶结点，而内部结点只存关键字和孩子指针，因此简化了内部结点的分支因子。</p>
+<p>B+树遍历也更高效，其中B+树只需所有叶子节点串成链表这样就可以从头到尾遍历，其中内部结点是并不存储信息，而是存储叶子结点的最小值作为索引。B+树用于数据库和文件系统中，NTFS等都使用B+树作为数据索引.</p>
+<p>如下图，是一个B+树:</p>
+<p><img alt="BpTree" src="../../../img/BpTree.png" /></p>
+<p>B和B+树的区别在于，B+树的非叶子结点只包含导航信息，不包含实际的值，所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。</p>
+<p>B+ 树的优点在于：</p>
+<ul>
+<li>由于B+树在内部节点上不包含数据信息，因此在内存页中能够存放更多的key。 数据存放的更加紧密，具有更好的空间局部性。因此访问叶子节点上关联的数据也具有更好的缓存命中率。</li>
+<li>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一层的递归遍历。相邻的元素可能在内存中不相邻，所以缓存命中性没有B+树好。</li>
+</ul>
+<p>B树也有优点，其优点在于，由于B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。</p>
               
             </div>
           </div>
@@ -595,10 +307,10 @@ class Tree{
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../OS-notes-concept/" class="btn btn-neutral float-right" title="知识笔记-操作系统-基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../hash/" class="btn btn-neutral float-right" title="数据结构-散列">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../linklist/" class="btn btn-neutral" title="数据结构-链表"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../RBTree/" class="btn btn-neutral" title="数据结构-树-红黑树"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -626,10 +338,10 @@ class Tree{
           <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../linklist/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../RBTree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../OS-notes-concept/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../hash/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
