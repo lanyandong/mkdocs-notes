@@ -57,8 +57,10 @@ nav:
        - 编程语言-C++性能优化指南: notes/language/optimized-cpp.md
        - 编程语言-Python编程基础: notes/language/python.md
         
-- 其他: about.md
-
+- 未分类:
+        - OOP-六条设计原则: notes/oop-design.md 
+        - 设计模式: notes/design-pattern.md
+        
 
 
 
