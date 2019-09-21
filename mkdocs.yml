@@ -53,6 +53,8 @@ nav:
        - Java程序设计-关键字this和super: notes/language/java/java-super-this.md
        - Java程序设计-多线程基础: notes/language/java/java-multithreading.md
        - Java程序设计-jdbc的使用.md: notes/language/java/java-jdbc.md
+       - Java程序设计-基础强化.md: notes/language/java/java-base.md
+       - 编程语言-C语言基础常用: notes/language/c-notes.md
        - 编程语言-C++常用基础概念: notes/language/cpp-base-concept.md
        - 编程语言-C++性能优化指南: notes/language/optimized-cpp.md
        - 编程语言-Python编程基础: notes/language/python.md
