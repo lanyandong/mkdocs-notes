@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ydlan">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>编程语言-C语言基础常用 - Learning Notes</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7f16\u7a0b\u8bed\u8a00-C\u8bed\u8a00\u57fa\u7840\u5e38\u7528";
+    var mkdocs_page_input_path = "notes\\language\\c-notes.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Learning Notes</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">面试知识</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-keynote/">面试要点-操作系统篇</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-network-keynote/">面试要点-计算机网络篇</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">数据结构和算法</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/algorithm-analysis/">算法-复杂度分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/sort-algorithm/">算法-排序-总结</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/simplesort/">算法-排序-简单排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/mergesort/">算法-排序-归并排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/shellsort/">算法-排序-Shell排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/quicksort/">算法-排序-快速排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/redixsort/">算法-排序-基数排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/heapsort/">算法-排序-堆排序</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/recursion/">算法-递归算法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/stack-queue/">数据结构-栈和队列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/linklist/">数据结构-链表</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/BST/">数据结构-树-二叉树</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/RBTree/">数据结构-树-红黑树</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/tree/">数据结构-树-多叉树</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/hash/">数据结构-散列</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/heap/">数据结构-堆(Heap)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/graph/">数据结构-图(Graph)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/dfs-bfs/">数据结构-图-搜索</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../datastructure-algorithm/graph-algorithm/">数据结构-图-应用</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">知识笔记</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OS-notes-concept/">知识笔记-操作系统-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-network/">知识笔记-计算机网络-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-design/">知识笔记-组成原理-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-structure/">知识笔记-系统结构-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../software-engineering/">知识笔记-软件工程-基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../computer-introduction/">知识笔记-计算机基础-常用概念</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">编程语言</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../java/java-collection/">Java程序设计-容器类库</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java/java-super-this/">Java程序设计-关键字this和super</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java/java-multithreading/">Java程序设计-多线程基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java/java-jdbc/">Java程序设计-jdbc的使用.md</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../java/java-base/">Java程序设计-基础强化.md</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">编程语言-C语言基础常用</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#c">C语言基础</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#c_1">C语言程序执行过程</a></li>
+        
+            <li><a class="toctree-l4" href="#printfscanf">printf()和scanf()函数</a></li>
+        
+            <li><a class="toctree-l4" href="#_1">基本数据类型</a></li>
+        
+            <li><a class="toctree-l4" href="#_3">转义序列</a></li>
+        
+            <li><a class="toctree-l4" href="#switch">switch语句</a></li>
+        
+            <li><a class="toctree-l4" href="#_4">类型转换</a></li>
+        
+            <li><a class="toctree-l4" href="#_5">值和引用</a></li>
+        
+            <li><a class="toctree-l4" href="#_6">指针</a></li>
+        
+            <li><a class="toctree-l4" href="#_7">数组</a></li>
+        
+            <li><a class="toctree-l4" href="#_8">字符串</a></li>
+        
+            <li><a class="toctree-l4" href="#_9">结构体</a></li>
+        
+            <li><a class="toctree-l4" href="#_10">文件处理</a></li>
+        
+            <li><a class="toctree-l4" href="#_11">数学函数</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cpp-base-concept/">编程语言-C++常用基础概念</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../optimized-cpp/">编程语言-C++性能优化指南</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python/">编程语言-Python编程基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">未分类</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../oop-design/">OOP-六条设计原则</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../design-pattern/">设计模式</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Learning Notes</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>编程语言 &raquo;</li>
+        
+      
+    
+    <li>编程语言-C语言基础常用</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/ydlan/mkdocs-notes/edit/master/docs/notes/language/c-notes.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="c">C语言基础</h2>
+<p>熟悉下面的一些基础概念和语法，使用C语言刷算法题就基本可以了。</p>
+<h3 id="c_1">C语言程序执行过程</h3>
+<p>源代码——预处理器Preprcessor——扩展源代码——编译器Compiler-——汇编代码——汇编器Assembler——目标代码（simple.obj）——链接器Linker——可执行代码（simple.exe）——加载器loader——内存执行——控制台输出。</p>
+<h3 id="printfscanf"><code>printf()</code>和<code>scanf()</code>函数</h3>
+<p>内置库函数，在<code>stdio.h</code>(头文件)中定义。</p>
+<pre><code class="c">printf(&quot;format string&quot;,argument_list);
+</code></pre>
+
+<p>格式字符串(<code>"format string"</code>)可以是<code>%d</code>(整数)，<code>%c</code>(字符)，<code>%s</code>(字符串)，<code>%f</code>(float)等)。</p>
+<pre><code class="c">scanf(&quot;format string&quot;,argument_list);
+</code></pre>
+
+<p>例如<code>scanf("%d",&amp;number)</code>语句从控制台读取整数，并将给定值存储在数字变量中。</p>
+<h3 id="_1">基本数据类型</h3>
+<p>C语言中有<code>4</code>种类型的数据类型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>包含的类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本数据类型(<em>Basic Data Type</em>)</td>
+<td>int, char, float, double</td>
+</tr>
+<tr>
+<td>派生数据类型(<em>Derived Data Type</em>)</td>
+<td>array, pointer, structure, union</td>
+</tr>
+<tr>
+<td>枚举数据类型(<em>Enumeration Data Type</em>)</td>
+<td>enum</td>
+</tr>
+<tr>
+<td>Void数据类型(<em>void Data Type</em>)</td>
+<td>void</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2"></h3>
+<h3 id="_3">转义序列</h3>
+<table>
+<thead>
+<tr>
+<th><code>\n</code></th>
+<th>新行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\r</code></td>
+<td>回车</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<h3 id="switch"><code>switch</code>语句</h3>
+<p><code>switch</code>表达式必须是整数或字符类型。<code>case</code>值必须是整数或字符常量。</p>
+<pre><code class="c">switch(expression){    
+case value1:    
+ //code to be executed;    
+ break;  //optional  
+case value2:    
+ //code to be executed;    
+ break;  //optional  
+......    
+
+default:     
+ code to be executed if all cases are not matched;    
+}
+
+</code></pre>
+
+<h3 id="_4">类型转换</h3>
+<p>语法：<code>(type)value</code>; 始终建议将较低的值转换为较高值以避免数据丢失。</p>
+<pre><code class="c">// 无类型转换：Output: 2
+int f= 9/4;  
+printf(&quot;f : %d\n&quot;, f );
+
+//使用类型转换：Output: 2.250000
+float f=(float) 9/4;  
+printf(&quot;f : %f\n&quot;, f );
+</code></pre>
+
+<h3 id="_5">值和引用</h3>
+<p>在通过值调用函数时，原始值不被修改。在通过引用的调用中，原始值可被修改并反映到外部调用者。</p>
+<pre><code class="c">void change(int num) {
+    num = num + 10; 
+}
+
+void change(int *num) {
+    *num = *num + 10; 
+}
+
+int main() {
+    int x = 200;
+    change2(x);  // 通过值调用，变量x并没有改变
+    change2(&amp;x); // 通过引用调用，变量x已经改变了
+    return 0;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>通过值调用</th>
+<th>通过引用调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>将值的副本传递给函数</td>
+<td>将值的地址传递给函数</td>
+</tr>
+<tr>
+<td>函数内的更改不会反映在函数外</td>
+<td>函数内部的改变也反映在函数的外部</td>
+</tr>
+<tr>
+<td>将在不同的内存位置创建实际和正式的参数</td>
+<td>将在相同的内存位置创建实际和正式的参数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">指针</h3>
+<pre><code class="c">// 这段代码很有意思
+int main(){
+    int a = 10, b = 20, *p1 = &amp;a, *p2 = &amp;b;
+    printf(&quot;Before swap: *p1=%d *p2=%d\n&quot;, *p1, *p2);
+    *p1 = *p1 + *p2;
+    *p2 = *p1 - *p2;
+    *p1 = *p1 - *p2;
+    printf(&quot;\nAfter swap: *p1=%d *p2=%d\n&quot;, *p1, *p2);
+}
+
+// Output
+//Before swap: *p1=10 *p2=20
+//After swap: *p1=20 *p2=1
+</code></pre>
+
+<h3 id="_7">数组</h3>
+<pre><code class="c">int main(){
+    // 数组声明初始化
+    int arr[5]; // 声明大小，后赋值
+    int arr2[5] = {1,2,3,4,5} // 声明赋值
+    int arr3[] = {1,2,3,4,5}  
+
+    // 二维数组
+    int arr4[3][4] = {0}; // 初始化是一个好习惯 
+    int arr5[3][4] = {{1,2,3,4},{2,3,4,5},{3,4,5,6}};
+    int j, k;
+    // 遍历
+    for(j = 0; j &lt; 3; j++) {
+        for(k = 0; k &lt; 4; k++){
+            printf(&quot;%d &quot;, arr5[j][k]);
+        }
+        printf(&quot;\n&quot;);
+    }
+
+    // 将数组作为参数传递给函数
+    int arr[5] = {5,4,3,2,1};
+    bubsort(arr,5); // 调用
+}
+// 函数要声明
+void bubsort(int arr[], int len){
+}
+</code></pre>
+
+<h3 id="_8">字符串</h3>
+<p>C语言中的字符串是由<code>\0</code>(空字符)终止的字符数组。<code>gets()</code>函数从用户读取字符串，<code>puts()</code>函数打印字符串。这两个函数都在<code>&lt;stdio.h&gt;</code>头文件中定义。</p>
+<pre><code class="c">char ch[]={'h', 'e', 'l', 'l', '0', '\0'};
+char ch2[]=&quot;hello&quot;;
+
+// 输入输出
+char str[10];
+printf(&quot;输入一个字符串：\n&quot;);
+gets(str);
+puts(str);
+
+// 字符串函数，在&quot;string.h&quot;库中定义。
+// strlen()；字符串长度
+int len = strlen(str);
+printf(&quot;字符串长度：%d\n&quot;, len);
+
+// strcpy(destination，source)；字符串拷贝
+char str2[10];
+strcpy(str2，str); // 将字符串str拷贝到字符串str2
+
+// strcat(first_string, second_string)函数连接两个字符串，结果返回到first_string
+char str3[] = &quot; world&quot;;
+strcat(str, str3);
+
+// strcmp(first_string, second_string)函数比较两个字符串，如果两个字符串相等，则返回0。
+if(strcmp(str, str2) == 0);
+
+// strrev(string)函数返回给定字符串的反转字符串。
+printf(&quot;字符串反转: %s \n&quot;, strrev(str));
+
+// strlwr(string)函数返回给定字符串的小写形式
+printf(&quot;小写形式: %s \n&quot;, strlwr(str));
+// strupr(string)函数返回给定字符串的大写形式
+printf(&quot;大写形式: %s \n&quot;, strupr(str));
+
+</code></pre>
+
+<h3 id="_9">结构体</h3>
+<pre><code class="c">// 定义一个结构体
+struct employee  
+{   int id;  
+    char name[50];  
+    float salary;  
+};
+
+// 在main中声明一个结构体变量
+struct employee e1;
+// 赋值调用
+e1.id = 110;
+
+// 结构体数组
+// 就是将结构体以数组形式保存
+struct employee e[10]; // 相当于定义了10个结构体变量
+
+// 结构体嵌套
+struct Employee
+{
+    int id;
+    char name[20];
+    struct Date
+    {
+        int dd;
+        int mm;
+        int yyyy;
+    }doj;
+}e1;
+// 赋值
+e1.id = 110;
+e1.doj.yyyy = 2019;
+</code></pre>
+
+<p><strong>联合体</strong></p>
+<p>像结构体一样，联合体(<code>Union</code>)在C语言中是一个用户定义的数据类型，用于保存不同类型的元素。但它并不占所有成员的内存总和。它只占最大成员的内存，它分享最大成员的内存。</p>
+<h3 id="_10">文件处理</h3>
+<p>常用函数：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>函数名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>fopen()</td>
+<td>打开新的或现有的文件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>fprintf()</td>
+<td>将数据写入文件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>fscanf()</td>
+<td>从文件读取数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td>fclose()</td>
+<td>关闭文件</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="c">// FILE *fopen( const char * filename, const char * mode );
+// int fprintf(FILE *stream, const char *format [, argument, ...])
+// int fscanf(FILE *stream, const char *format [, argument, ...])
+
+#include &lt;stdio.h&gt;  
+main() {
+    FILE *fp;
+    // 写文件
+    fp = fopen(&quot;file.txt&quot;, &quot;w&quot;);  
+    fprintf(fp, &quot;Hello World\n&quot;);
+    fclose(fp);   
+    // 读文件
+    char buff[255]; 
+    fp = fopen(&quot;file.txt&quot;, &quot;r&quot;);  
+    while(fscanf(fp, &quot;%s&quot;, buff)!=EOF){  
+        printf(&quot;%s &quot;, buff );  
+    }  
+    fclose(fp); 
+}
+</code></pre>
+
+<h3 id="_11">数学函数</h3>
+<p><code>math.h</code>头文件中定义和实现有各种方法。<code>math.h</code>头文件的常用函数如下。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ceil(number)</code></td>
+<td>舍入给定数字。它返回大于或等于给定数字的整数值。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>floor(number)</code></td>
+<td>舍入给定数字。它返回小于或等于给定数字的整数值。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>sqrt(number)</code></td>
+<td>返回给定数字的平方根。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>pow(base,exponent)</code></td>
+<td>返回给定数字的幂值。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>abs(number)</code></td>
+<td>返回给定数字的绝对值。</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cpp-base-concept/" class="btn btn-neutral float-right" title="编程语言-C++常用基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../java/java-base/" class="btn btn-neutral" title="Java程序设计-基础强化.md"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ydlan/mkdocs-notes/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../java/java-base/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cpp-base-concept/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
