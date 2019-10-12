@@ -14,9 +14,7 @@ markdown_extensions:
 
 nav:
 - 主页: index.md
-- 面试知识:  
-        - 面试要点-操作系统篇: notes/OS-notes-keynote.md
-        - 面试要点-计算机网络篇: notes/computer-network-keynote.md
+
         
 - 数据结构和算法:
        - 算法-复杂度分析: notes/datastructure-algorithm/algorithm-analysis.md
@@ -40,24 +38,25 @@ nav:
        - 数据结构-图-搜索: notes/datastructure-algorithm/dfs-bfs.md
        - 数据结构-图-应用: notes/datastructure-algorithm/graph-algorithm.md
             
-- 知识笔记:
-        - 知识笔记-操作系统-基础概念: notes/OS-notes-concept.md
-        - 知识笔记-计算机网络-基础概念: notes/computer-network.md
-        - 知识笔记-组成原理-基础概念: notes/computer-design.md
-        - 知识笔记-系统结构-基础概念: notes/system-structure.md
-        - 知识笔记-软件工程-基础概念: notes/software-engineering.md
-        - 知识笔记-计算机基础-常用概念: notes/computer-introduction.md
+- 计算机基础:
+        - 基础概念-计算机导论: notes/cs-base/computer-introduction.md
+        - 基础概念-计算机网络: notes/cs-base/computer-network.md
+        - 基础概念-操作系统: notes/cs-base/OS-notes-concept.md
+        - 基础概念-组成原理: notes/cs-base/computer-design.md
+        - 基础概念-系统结构: notes/cs-base/system-structure.md
+        - 基础概念-软件工程: notes/cs-base/software-engineering.md       
+        - 编程语言-C语言基础: notes/language/c-notes.md
+        - 编程语言-C++基础概念: notes/language/cpp-base-concept.md
+        - 编程语言-C++性能优化: notes/language/optimized-cpp.md
+        - 编程语言-Python编程: notes/language/python.md
         
-- 编程语言:
-       - Java程序设计-容器类库: notes/language/java/java-collection.md
-       - Java程序设计-关键字this和super: notes/language/java/java-super-this.md
-       - Java程序设计-多线程基础: notes/language/java/java-multithreading.md
-       - Java程序设计-jdbc的使用.md: notes/language/java/java-jdbc.md
-       - Java程序设计-基础强化.md: notes/language/java/java-base.md
-       - 编程语言-C语言基础常用: notes/language/c-notes.md
-       - 编程语言-C++常用基础概念: notes/language/cpp-base-concept.md
-       - 编程语言-C++性能优化指南: notes/language/optimized-cpp.md
-       - 编程语言-Python编程基础: notes/language/python.md
+- 程序设计(Java):
+       - Java程序设计-容器类库: notes/java/java-collection.md
+       - Java程序设计-关键字this和super: notes/java/java-super-this.md
+       - Java程序设计-多线程基础: notes/java/java-multithreading.md
+       - Java程序设计-jdbc的使用.md: notes/java/java-jdbc.md
+       - Java程序设计-基础强化.md: notes/java/java-base.md
+      
         
 - 未分类:
         - OOP-六条设计原则: notes/oop-design.md 
